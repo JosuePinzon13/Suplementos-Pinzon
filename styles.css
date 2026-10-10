@@ -23,3 +23,8 @@ footer{background:#050506;color:#aaaab0;padding:32px max(24px,calc((100vw - var(
 .image-fallback{position:absolute;inset:0;display:grid;place-items:center;padding:20px;text-align:center;color:#d6d6da;font-weight:900;font-size:15px;background:radial-gradient(circle at 50% 25%,#2a0d10,#121216 55%,#0b0b0d)}
 .product-image{position:relative}.product-image img{position:relative;z-index:2}
 .footer-brand{font-weight:900;color:#fff;letter-spacing:.08em}.footer-brand span{color:#ff343a;font-size:20px;margin-right:6px}
+
+.brand-logo{width:132px;height:58px;background:#fff;border-radius:12px;padding:4px;overflow:hidden}
+.brand-logo img{width:100%;height:100%;object-fit:contain}
+.hero-logo{width:min(390px,88%);max-height:330px;object-fit:contain;border-radius:24px;background:#fff;position:relative;z-index:2;box-shadow:0 22px 55px rgba(0,0,0,.22)}
+.footer-logo{width:92px;height:64px;object-fit:contain;background:#fff;border-radius:10px}
