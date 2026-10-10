@@ -1,6 +1,6 @@
 window.SP_DATA = {
   products: [
-    { id:'olympus', name:'Olympus Supps Creatina Monohidratada', presentation:'60 servidas', price:12.50, category:'Creatinas', image:'assets/olympus.webp', status:'Disponible / bajo pedido' },
+    { id:'olympus', name:'Olympus Supps Creatina Monohidratada', presentation:'60 servidas', price:12.50, category:'Creatinas', image:'assets/olympus-v3.webp', status:'Disponible / bajo pedido' },
     { id:'nutrex60', name:'Nutrex Creatine Monohydrate', presentation:'60 servidas', price:14.00, category:'Creatinas', image:'assets/nutrex.webp', status:'Disponible / bajo pedido' },
     { id:'creakong', name:'Creakong CX8', presentation:'30 servidas', price:12.00, category:'Creatinas', image:'assets/creakong.webp', status:'Disponible / bajo pedido' },
     { id:'oneofone', name:'One of One Creatine Monohydrate', presentation:'200 servidas', price:37.00, category:'Creatinas', image:'assets/oneofone.webp', status:'Bajo pedido' },
