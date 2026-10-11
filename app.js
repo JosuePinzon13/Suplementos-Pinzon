@@ -12,7 +12,7 @@ function whatsappFor(item) {
 function productCard(p) {
   return `
     <article class="product-card" data-category="${p.category}">
-      <div class="product-image">
+      <div class="product-image ${p.id}">
         <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'image-fallback\\'>${p.name}</div>'">
       </div>
       <div class="product-info">
