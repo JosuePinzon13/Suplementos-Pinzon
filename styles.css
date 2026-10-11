@@ -29,6 +29,7 @@ footer{background:#050506;color:#aaaab0;padding:32px max(24px,calc((100vw - var(
 .footer-logo{width:92px;height:64px;object-fit:contain;background:#fff;border-radius:10px}
 
 /* PRODUCT IMAGE RULES */
+/* PRODUCT IMAGE RULES */
 .product-image {
   position: relative;
   background-color: #0d0d10;
@@ -36,7 +37,7 @@ footer{background:#050506;color:#aaaab0;padding:32px max(24px,calc((100vw - var(
   align-items: center;
   justify-content: center;
   height: 250px;
-  padding: 10px; /* Le da 10px de margen para no cortar las tapas */
+  padding: 12px;
   overflow: hidden;
 }
 
@@ -47,7 +48,7 @@ footer{background:#050506;color:#aaaab0;padding:32px max(24px,calc((100vw - var(
   height: 100%;
   object-fit: contain;
   object-position: center;
-  transform: scale(1.12); /* 1.12 en vez de 1.35 para que no se desborden */
+  transform: scale(1.12);
   filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.7));
   transition: transform 0.25s ease;
 }
@@ -55,12 +56,14 @@ footer{background:#050506;color:#aaaab0;padding:32px max(24px,calc((100vw - var(
 .product-card:hover .product-image img {
   transform: scale(1.18);
 }
+
 /* Ajuste específico para R1 Mass Gainer */
-.product-image img[src*="R1.webp"] {
-  max-height: 84%;
-  transform: scale(0.92);
+.product-image img[src*="R1"] {
+  width: 82% !important;
+  height: 82% !important;
+  transform: scale(1) !important;
 }
 
-.product-card:hover .product-image img[src*="R1.webp"] {
-  transform: scale(0.97);
+.product-card:hover .product-image img[src*="R1"] {
+  transform: scale(1.06) !important;
 }
