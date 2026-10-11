@@ -10,7 +10,7 @@ window.SP_DATA = {
     { id:'lipo6', name:'Nutrex Lipo-6 Black Ultra Concentrate', presentation:'2 unidades', price:36.00, category:'Otros', image:'assets/Duo Lipo6.jpg?v=3', status:'Disponible / bajo pedido' }
   ],
   combos: [
-    { name:'Combo Volumen', description:'Mutant Mass Extreme 6 lb + Olympus Creatina 60 servidas', price:49.00, badge:'Destacado' },
+    { name:'Combo Volumen', description:'Mutant Mass Extreme 6 lb + Olympus Creatina 60 servidas', price:49.00, badge:'Destacado', image:'assets/Combo Volumen.jpg' },
     { name:'Combo Creatina Pro', description:'One of One Creatine 200 servidas + Creakong CX8', price:46.99, badge:'Alto valor' },
     { name:'Combo Volumen Plus', description:'Mutant Mass Extreme 6 lb + Creakong CX8', price:50.99, badge:'Volumen' },
     { name:'Combo Proteína + Creatina', description:'R1 Source7 1.8 lb + Creakong CX8', price:44.99, badge:'Equilibrado' }
