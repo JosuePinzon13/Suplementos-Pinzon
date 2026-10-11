@@ -122,23 +122,24 @@ a[href*="wa.me"].btn-secondary:hover {
 /* IMÁGENES DE COMBOS */
 .combo-img-wrap {
   width: 100%;
-  height: 190px;
+  height: 200px;
   border-radius: 12px;
   overflow: hidden;
-  background: #09090b;
+  background: #111114; /* Mismo fondo de la tarjeta para que se integre */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 14px;
+  padding: 8px; /* Pequeño margen para que la imagen no toque los bordes */
 }
 
 .combo-img-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Ajusta la imagen entera sin recortarla ni pixelarla */
   transition: transform 0.25s ease;
 }
 
 .combo-card:hover .combo-img-wrap img {
-  transform: scale(1.04);
+  transform: scale(1.03); /* Un zoom más sutil para no perder calidad */
 }
