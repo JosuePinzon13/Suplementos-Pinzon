@@ -13,6 +13,6 @@ window.SP_DATA = {
     { name:'Combo Volumen', description:'Mutant Mass Extreme 6 lb + Olympus Creatina 60 servidas', price:49.00, badge:'Destacado', image:'assets/Combo Volumen.jpg' },
     { name:'Combo Creatina Pro', description:'One of One Creatine 200 servidas + Creakong CX8', price:46.99, badge:'Alto valor', image:'assets/Combo Creatina Pro.jpg' },
     { name:'Combo Volumen Plus', description:'Mutant Mass Extreme 6 lb + Creakong CX8', price:50.99, badge:'Volumen', image:'assets/Combo Volumen Plus.jpg' },
-    { name:'Combo Proteína + Creatina', description:'R1 Source7 1.8 lb + Creakong CX8', price:44.99, badge:'Equilibrado', image:'assets/Combo Proteina Creatina.jpg' }
+    { name:'Combo Proteína y Creatina', description:'R1 Source7 1.8 lb + Creakong CX8', price:44.99, badge:'Equilibrado', image:'assets/Combo Proteina Creatina.jpg' }
   ]
 };
