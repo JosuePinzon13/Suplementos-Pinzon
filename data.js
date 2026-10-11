@@ -15,3 +15,4 @@ window.SP_DATA = {
     { name:'Combo Volumen Plus', description:'Mutant Mass Extreme 6 lb + Creakong CX8', price:50.99, badge:'Volumen' },
     { name:'Combo Proteína + Creatina', description:'R1 Source7 1.8 lb + Creakong CX8', price:44.99, badge:'Equilibrado' }
   ]
+};
