@@ -9,6 +9,7 @@ function whatsappFor(item) {
   const msg = `Hola, vi ${item} en la página de Suplementos Pinzón y quiero consultar disponibilidad.`;
   return waBase + encodeURIComponent(msg);
 }
+
 function productCard(p) {
   return `
     <article class="product-card" data-category="${p.category}">
@@ -23,20 +24,31 @@ function productCard(p) {
       </div>
     </article>`;
 }
+
 function renderProducts(category = 'Todos') {
   const list = category === 'Todos' ? products : products.filter(p => p.category === category);
   productGrid.innerHTML = list.map(productCard).join('');
 }
+
 const categories = ['Todos', ...new Set(products.map(p => p.category))];
 filters.innerHTML = categories.map((c, i) => `<button class="filter-btn ${i===0?'active':''}" data-filter="${c}">${c}</button>`).join('');
+
 filters.addEventListener('click', e => {
   const btn = e.target.closest('.filter-btn'); if (!btn) return;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active'); renderProducts(btn.dataset.filter);
 });
+
 renderProducts();
+
+// Render de combos con soporte para imagen
 comboGrid.innerHTML = combos.map(c => `
   <article class="combo-card">
+    ${c.image ? `
+      <div class="combo-img-wrap">
+        <img src="${c.image}" alt="${c.name}" loading="lazy">
+      </div>
+    ` : ''}
     <span class="combo-badge">${c.badge}</span>
     <h3>${c.name}</h3>
     <p>${c.description}</p>
@@ -45,13 +57,16 @@ comboGrid.innerHTML = combos.map(c => `
       <a href="${whatsappFor(c.name)}" target="_blank" rel="noopener">Pedir combo →</a>
     </div>
   </article>`).join('');
+
 const menuBtn = document.getElementById('menuBtn');
 const navMenu = document.getElementById('navMenu');
 menuBtn.addEventListener('click', () => {
   const open = navMenu.classList.toggle('open');
   menuBtn.setAttribute('aria-expanded', String(open));
 });
+
 navMenu.addEventListener('click', e => {
   if (e.target.tagName === 'A') { navMenu.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
 });
+
 document.getElementById('year').textContent = new Date().getFullYear();
