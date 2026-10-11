@@ -68,13 +68,13 @@ footer{background:#050506;color:#aaaab0;padding:32px max(24px,calc((100vw - var(
 .product-card[data-category="Proteínas"] .product-image img,
 .product-image img[src*="Source7"],
 .product-image img[src*="source7"] {
-  width: 72% !important;
-  height: 72% !important;
-  transform: scale(0.92) !important;
+  width: 78% !important;
+  height: 78% !important;
+  transform: scale(1) !important;
 }
 
 .product-card:hover .product-image.r1source7 img,
 .product-card[data-category="Proteínas"]:hover .product-image img,
 .product-card:hover .product-image img[src*="Source7"] {
-  transform: scale(0.98) !important;
+  transform: scale(1.05) !important;
 }
