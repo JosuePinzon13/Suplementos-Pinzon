@@ -53,17 +53,13 @@ footer{background:#050506;color:#aaaab0;padding:32px max(24px,calc((100vw - var(
   transition: transform 0.25s ease;
 }
 
-.product-card:hover .product-image img {
-  transform: scale(1.18);
-}
-
-/* Ajuste específico para R1 Mass Gainer */
-.product-image img[src*="R1"] {
-  width: 82% !important;
-  height: 82% !important;
+/* Escala directa para el Gainer */
+.product-image.r1mass img {
+  width: 78% !important;
+  height: 78% !important;
   transform: scale(1) !important;
 }
 
-.product-card:hover .product-image img[src*="R1"] {
-  transform: scale(1.06) !important;
+.product-card:hover .product-image.r1mass img {
+  transform: scale(1.05) !important;
 }
