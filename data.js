@@ -33,6 +33,38 @@ window.SP_DATA = {
         { name: 'Cookies & Creme', image: 'assets/R1SCookiC.png' }
       ]
     },
+    { 
+      id: 'r1whey2lb', 
+      name: 'R1 Whey Protein (100% Whey)', 
+      presentation: '2.0 lb (28 servidas)', 
+      price: 45.00, 
+      category: 'Proteínas', 
+      image: 'assets/r1-whey-2lb/R1BanaCr.png', 
+      status: 'Bajo pedido',
+      highlights: [
+        '24g de proteína 100% de suero (WPC, WPI, WPH)',
+        '11g de EAAs y más de 5g de BCAAs naturales',
+        'Digestión rápida y textura suave'
+      ],
+      description: 'Fórmula basada exclusivamente en tres fuentes de proteína de suero de leche de rápida absorción. Diseñada para acelerar la recuperación muscular post-entrenamiento.',
+      benefits: [
+        'Acelera la reparación de fibras musculares tras entrenamientos intensos.',
+        'Absorción rápida: óptima para consumir inmediatamente después del ejercicio.',
+        'Baja en grasas, azúcares y sin amino spiking.'
+      ],
+      usage: 'Mezclar 1 scoop en 6 a 8 oz de agua fría o leche descremada justo al finalizar el entrenamiento.',
+      flavors: [
+        { name: 'Banana Crème', image: 'assets/r1-whey-2lb/R1BanaCr.png' },
+        { name: 'Café Mocha', image: 'assets/r1-whey-2lb/R1CafM.png' },
+        { name: 'Chocolate Fudge', image: 'assets/r1-whey-2lb/R1ChocoF.png' },
+        { name: 'Chocolate Peanut Butter', image: 'assets/r1-whey-2lb/R1ChocoPea.png' },
+        { name: 'Cookies & Crème', image: 'assets/r1-whey-2lb/R1CookCr.png' },
+        { name: 'Fruity Cereal', image: 'assets/r1-whey-2lb/R1FruitC.png' },
+        { name: 'Salted Caramel', image: 'assets/r1-whey-2lb/R1SaltedCar.png' },
+        { name: 'Strawberries & Crème', image: 'assets/r1-whey-2lb/R1StrawberCre.png' },
+        { name: 'Vanilla', image: 'assets/r1-whey-2lb/R1Vaini.png' }
+      ]
+    },
     { id:'r1mass', name:'R1 Mass Gainer', presentation:'5.5 lb', price:42.00, category:'Ganadores de peso', image:'assets/R1.webp?v=3', status:'Bajo pedido' },
     { id:'mutantmass', name:'Mutant Mass Extreme 2500', presentation:'6 lb', price:41.00, category:'Ganadores de peso', image:'assets/Mutant Mass Extreme 6 lb.webp?v=3', status:'Bajo pedido' },
     { id:'lipo6', name:'Nutrex Lipo-6 Black Ultra Concentrate', presentation:'2 unidades', price:36.00, category:'Otros', image:'assets/Duo Lipo6.jpg?v=3', status:'Disponible / bajo pedido' }
