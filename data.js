@@ -65,7 +65,7 @@ window.SP_DATA = {
         { name: 'Vanilla', image: 'assets/r1-whey-2lb/R1Vaini.png' }
       ]
     },
-    { id:'r1mass', name:'R1 Mass Gainer', presentation:'5.5 lb', price:42.00, category:'Ganadores de peso', image:'assets/R1.webp?v=3', status:'Bajo pedido' },
+    { id:'r1mass', name:'R1 Mass Gainer', presentation:'6 lb', price:42.00, category:'Ganadores de peso', image:'assets/R1.webp?v=3', status:'Bajo pedido' },
     { id:'mutantmass', name:'Mutant Mass Extreme 2500', presentation:'6 lb', price:41.00, category:'Ganadores de peso', image:'assets/Mutant Mass Extreme 6 lb.webp?v=3', status:'Bajo pedido' },
     { id:'lipo6', name:'Nutrex Lipo-6 Black Ultra Concentrate', presentation:'2 unidades', price:36.00, category:'Otros', image:'assets/Duo Lipo6.jpg?v=3', status:'Disponible / bajo pedido' }
   ],
