@@ -79,7 +79,8 @@ footer{background:#050506;color:#aaaab0;padding:32px max(24px,calc((100vw - var(
 .product-image.r1source7 img,
 .product-card[data-category="Proteínas"] .product-image img,
 .product-image img[src*="Source7"],
-.product-image img[src*="source7"] {
+.product-image img[src*="source7"],
+.product-image img[src*="R1S"] {
   width: 78% !important;
   height: 78% !important;
   transform: scale(1) !important;
@@ -87,9 +88,11 @@ footer{background:#050506;color:#aaaab0;padding:32px max(24px,calc((100vw - var(
 
 .product-card:hover .product-image.r1source7 img,
 .product-card[data-category="Proteínas"]:hover .product-image img,
-.product-card:hover .product-image img[src*="Source7"] {
+.product-card:hover .product-image img[src*="Source7"],
+.product-card:hover .product-image img[src*="R1S"] {
   transform: scale(1.05) !important;
 }
+
 /* Botón WhatsApp del menú superior (Header) */
 .header-cta {
   background: #25d366 !important;
@@ -119,27 +122,132 @@ a[href*="wa.me"].btn-secondary:hover {
   transform: translateY(-2px);
   color: #fff !important;
 }
+
 /* IMÁGENES DE COMBOS */
 .combo-img-wrap {
   width: 100%;
   height: 200px;
   border-radius: 12px;
   overflow: hidden;
-  background: #111114; /* Mismo fondo de la tarjeta para que se integre */
+  background: #111114;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 14px;
-  padding: 8px; /* Pequeño margen para que la imagen no toque los bordes */
+  padding: 8px;
 }
 
 .combo-img-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Ajusta la imagen entera sin recortarla ni pixelarla */
+  object-fit: contain;
   transition: transform 0.25s ease;
 }
 
 .combo-card:hover .combo-img-wrap img {
-  transform: scale(1.03); /* Un zoom más sutil para no perder calidad */
+  transform: scale(1.03);
+}
+
+/* =========================================================
+   VARIANTES, BENEFICIOS Y DETALLES DE PRODUCTO (SUPLEMENTOS PINZÓN)
+   ========================================================= */
+
+/* Selector de Sabores */
+.flavor-select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.flavor-select-wrap label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #27272a;
+}
+
+.flavor-select {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #d4d4d8;
+  background-color: #f4f4f5;
+  color: #18181b;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flavor-select:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+}
+
+.flavor-select option {
+  background-color: #ffffff;
+  color: #18181b;
+}
+
+/* Viñetas Rápidas (Highlights) */
+.product-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+.product-highlights li {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #16a34a;
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+
+/* Acordeón de detalles y beneficios */
+.product-details {
+  margin: 10px 0;
+  border-top: 1px dashed #e4e4e7;
+  padding-top: 6px;
+}
+
+.product-details summary {
+  font-size: 0.8rem;
+  color: var(--red);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  font-weight: 700;
+}
+
+.product-details summary:hover {
+  color: var(--red2);
+  text-decoration: underline;
+}
+
+.details-body {
+  padding-top: 8px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #52525b;
+}
+
+.details-desc {
+  margin: 0 0 6px 0;
+}
+
+.details-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0;
+}
+
+.details-benefits li {
+  margin-bottom: 3px;
+}
+
+.details-usage {
+  margin: 6px 0 0 0;
+  color: #18181b;
 }
