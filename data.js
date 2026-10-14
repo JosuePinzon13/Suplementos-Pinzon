@@ -4,7 +4,35 @@ window.SP_DATA = {
     { id:'nutrex60', name:'Nutrex Creatine Monohydrate', presentation:'60 servidas', price:14.00, category:'Creatinas', image:'assets/nutrex.webp', status:'Disponible / bajo pedido' },
     { id:'creakong', name:'Creakong CX8', presentation:'30 servidas', price:12.00, category:'Creatinas', image:'assets/creakong.png?v=3', status:'Disponible / bajo pedido' },
     { id:'oneofone', name:'One of One Creatine Monohydrate', presentation:'200 servidas', price:37.00, category:'Creatinas', image:'assets/oneofone.webp', status:'Bajo pedido' },
-    { id:'r1source7', name:'R1 Source7 Proteína', presentation:'1.8 lb', price:35.00, category:'Proteínas', image:'assets/R1 Source7 BDAY Cake 1.8 lb.png?v=3', status:'Bajo pedido' },
+    { 
+      id: 'r1source7', 
+      name: 'R1 Source7 Proteína', 
+      presentation: '1.8 lb', 
+      price: 35.00, 
+      category: 'Proteínas', 
+      image: 'assets/R1SMilkCh.png', 
+      status: 'Bajo pedido',
+      highlights: [
+        '22g de proteína por servicio',
+        '7 fuentes de absorción gradual',
+        'Textura suave y cremosa'
+      ],
+      description: 'Fórmula que combina 4 fuentes de suero lácteo, aislado de leche, caseína micelar y proteína vegetal para una recuperación sostenida.',
+      benefits: [
+        'Estimula la síntesis y reparación muscular prolongada.',
+        'Excelente saciedad: ideal post-entreno o entre comidas.',
+        'Perfil completo de aminoácidos esenciales (EAAs).'
+      ],
+      usage: 'Mezclar 1 scoop en 6 a 8 oz de agua fría o leche descremada.',
+      flavors: [
+        { name: 'Milk Chocolate', image: 'assets/R1SMilkCh.png' },
+        { name: 'Chocolate Peanut Butter', image: 'assets/R1SChocP.png' },
+        { name: 'Pistachio', image: 'assets/R1SPist.png' },
+        { name: 'Salted Caramel', image: 'assets/R1SCaramS.png' },
+        { name: 'Vanilla Creme', image: 'assets/R1SVain.png' },
+        { name: 'Cookies & Creme', image: 'assets/R1SCookiC.png' }
+      ]
+    },
     { id:'r1mass', name:'R1 Mass Gainer', presentation:'5.5 lb', price:42.00, category:'Ganadores de peso', image:'assets/R1.webp?v=3', status:'Bajo pedido' },
     { id:'mutantmass', name:'Mutant Mass Extreme 2500', presentation:'6 lb', price:41.00, category:'Ganadores de peso', image:'assets/Mutant Mass Extreme 6 lb.webp?v=3', status:'Bajo pedido' },
     { id:'lipo6', name:'Nutrex Lipo-6 Black Ultra Concentrate', presentation:'2 unidades', price:36.00, category:'Otros', image:'assets/Duo Lipo6.jpg?v=3', status:'Disponible / bajo pedido' }
