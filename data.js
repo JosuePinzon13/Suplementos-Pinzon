@@ -36,7 +36,7 @@ window.SP_DATA = {
     { 
       id: 'r1whey2lb', 
       name: 'R1 Whey Protein (100% Whey)', 
-      presentation: '2.0 lb (28 servidas)', 
+      presentation: '2.0 lb', 
       price: 45.00, 
       category: 'Proteínas', 
       image: 'assets/r1-whey-2lb/R1BanaCr.png', 
