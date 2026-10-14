@@ -5,12 +5,68 @@ const filters = document.getElementById('filters');
 const waBase = 'https://wa.me/50766897862?text=';
 
 function money(value) { return value == null ? 'Consultar' : `$${value.toFixed(2)}`; }
-function whatsappFor(item) {
-  const msg = `Hola, vi ${item} en la página de Suplementos Pinzón y quiero consultar disponibilidad.`;
+
+function whatsappFor(item, flavor = '') {
+  const flavorText = flavor ? ` en sabor ${flavor}` : '';
+  const msg = `Hola, vi ${item}${flavorText} en la página de Suplementos Pinzón y quiero consultar disponibilidad.`;
   return waBase + encodeURIComponent(msg);
 }
 
+// Función global para cambiar la foto y el enlace de WhatsApp al elegir un sabor
+window.changeFlavor = function(selectEl, productId, productName) {
+  const card = selectEl.closest('.product-card');
+  const imgEl = card.querySelector('.product-image img');
+  const btnEl = card.querySelector('.card-btn');
+  const selectedOption = selectEl.options[selectEl.selectedIndex];
+  
+  const newImage = selectEl.value;
+  const flavorName = selectedOption.text;
+
+  if (imgEl && newImage) {
+    imgEl.src = newImage;
+  }
+  if (btnEl) {
+    btnEl.href = whatsappFor(productName, flavorName);
+  }
+};
+
 function productCard(p) {
+  // 1. Selector de sabores (si existen)
+  const hasFlavors = p.flavors && p.flavors.length > 0;
+  const defaultFlavor = hasFlavors ? p.flavors[0].name : '';
+  
+  const flavorsHTML = hasFlavors ? `
+    <div class="flavor-select-wrap">
+      <label for="flavor-${p.id}">Sabor:</label>
+      <select id="flavor-${p.id}" class="flavor-select" onchange="changeFlavor(this, '${p.id}', '${p.name}')">
+        ${p.flavors.map(f => `<option value="${f.image}">${f.name}</option>`).join('')}
+      </select>
+    </div>
+  ` : '';
+
+  // 2. Viñetas rápidas (highlights)
+  const highlightsHTML = p.highlights && p.highlights.length > 0 ? `
+    <ul class="product-highlights">
+      ${p.highlights.map(h => `<li>✓ ${h}</li>`).join('')}
+    </ul>
+  ` : '';
+
+  // 3. Desplegable de información y beneficios
+  const detailsHTML = (p.description || p.benefits || p.usage) ? `
+    <details class="product-details">
+      <summary>Ver beneficios y uso</summary>
+      <div class="details-body">
+        ${p.description ? `<p class="details-desc">${p.description}</p>` : ''}
+        ${p.benefits && p.benefits.length > 0 ? `
+          <ul class="details-benefits">
+            ${p.benefits.map(b => `<li>• ${b}</li>`).join('')}
+          </ul>
+        ` : ''}
+        ${p.usage ? `<p class="details-usage"><strong>Uso:</strong> ${p.usage}</p>` : ''}
+      </div>
+    </details>
+  ` : '';
+
   return `
     <article class="product-card" data-category="${p.category}">
       <div class="product-image ${p.id}">
@@ -19,8 +75,13 @@ function productCard(p) {
       <div class="product-info">
         <div class="product-meta"><span>${p.category}</span><span>${p.presentation}</span></div>
         <h3>${p.name}</h3>
+        
+        ${highlightsHTML}
+        ${flavorsHTML}
+        ${detailsHTML}
+
         <div class="price-row"><strong>${money(p.price)}</strong><small>${p.status}</small></div>
-        <a class="card-btn" href="${whatsappFor(p.name)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <a class="card-btn" href="${whatsappFor(p.name, defaultFlavor)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
       </div>
     </article>`;
 }
