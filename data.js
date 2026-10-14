@@ -49,19 +49,19 @@ window.SP_DATA = {
       description: 'Fórmula basada exclusivamente en tres fuentes de proteína de suero de leche de rápida absorción. Diseñada para acelerar la recuperación muscular post-entrenamiento.',
       benefits: [
         'Acelera la reparación de fibras musculares tras entrenamientos intensos.',
-        'Absorción rápida: óptima para consumir inmediatamente después del ejercicio.',
-        'Baja en grasas, azúcares y sin amino spiking.'
+        'Absorción rápida: ideal para el post-entreno o para un aporte proteico rápido durante el día.'
+        'Baja en grasas y azúcares añadidos. Sin rellenos.'
       ],
-      usage: 'Mezclar 1 scoop en 6 a 8 oz de agua fría o leche descremada justo al finalizar el entrenamiento.',
+      usage: 'Mezclar 1 scoop en 6 a 8 oz de agua fría, leche o tu bebida favorita en cualquier momento del día para alcanzar tu meta de proteína.',
       flavors: [
-        { name: 'Banana Crème', image: 'assets/r1-whey-2lb/R1BanaCr.png' },
+        { name: 'Banana Creme', image: 'assets/r1-whey-2lb/R1BanaCr.png' },
         { name: 'Café Mocha', image: 'assets/r1-whey-2lb/R1CafM.png' },
         { name: 'Chocolate Fudge', image: 'assets/r1-whey-2lb/R1ChocoF.png' },
         { name: 'Chocolate Peanut Butter', image: 'assets/r1-whey-2lb/R1ChocoPea.png' },
-        { name: 'Cookies & Crème', image: 'assets/r1-whey-2lb/R1CookCr.png' },
+        { name: 'Cookies & Creme', image: 'assets/r1-whey-2lb/R1CookCr.png' },
         { name: 'Fruity Cereal', image: 'assets/r1-whey-2lb/R1FruitC.png' },
         { name: 'Salted Caramel', image: 'assets/r1-whey-2lb/R1SaltedCar.png' },
-        { name: 'Strawberries & Crème', image: 'assets/r1-whey-2lb/R1StrawberCre.png' },
+        { name: 'Strawberries & Creme', image: 'assets/r1-whey-2lb/R1StrawberCre.png' },
         { name: 'Vanilla', image: 'assets/r1-whey-2lb/R1Vaini.png' }
       ]
     },
