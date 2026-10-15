@@ -67,7 +67,8 @@ window.SP_DATA = {
     },
     { id:'r1mass', name:'R1 Mass Gainer', presentation:'6 lb', price:42.00, category:'Ganadores de peso', image:'assets/mass-gainer/R1.webp?v=3', status:'Bajo pedido' },
     { id:'mutantmass', name:'Mutant Mass Extreme 2500', presentation:'6 lb', price:41.00, category:'Ganadores de peso', image:'assets/mass-gainer/Mutant Mass Extreme 6 lb.webp?v=3', status:'Bajo pedido' },
-    { id:'lipo6', name:'Nutrex Lipo-6 Black Ultra Concentrate', presentation:'2 unidades', price:36.00, category:'Otros', image:'assets/quemadores/Duo Lipo6.jpg?v=3', status:'Disponible / bajo pedido' }
+    { id:'lipo6-unit', name:'Nutrex Lipo-6 Black Ultra Concentrate', presentation:'60 cápsulas (1 unidad)', price:22.00, category:'Otros', image:'assets/quemadores/Lipo6-black.jpg', status:'Disponible / bajo pedido' },
+    { id:'lipo6', name:'Nutrex Lipo-6 Black Ultra Concentrate', presentation:'2 unidades (Dúo Pack)', price:36.00, category:'Otros', image:'assets/quemadores/Duo-Lipo6.jpg?v=3', status:'Disponible / bajo pedido' }
   ],
   combos: [
     { name:'Combo Volumen', description:'Mutant Mass Extreme 6 lb + Olympus Creatina 60 servidas', price:49.00, badge:'Destacado', image:'assets/combos/Combo Volumen.jpg' },
