@@ -7,7 +7,7 @@ window.SP_DATA = {
       price: 12.00,
       originalPrice: 12.50,
       category: 'Creatinas', 
-      image: 'assets/creatinas/olympus-final.webp', 
+      image: 'assets/optimized/creatinas/olympus-final.webp',
       status: 'Preventa'
     },
     { 
@@ -25,7 +25,7 @@ window.SP_DATA = {
       presentation: '30 servidas', 
       price: 12.00, 
       category: 'Creatinas', 
-      image: 'assets/creatinas/creakong.png?v=3', 
+      image: 'assets/optimized/creatinas/creakong.webp?v=3',
       status: 'Disponible / bajo pedido' 
     },
     { 
@@ -43,7 +43,7 @@ window.SP_DATA = {
       presentation: '1.8 lb', 
       price: 35.00, 
       category: 'Proteínas', 
-      image: 'assets/r1-whey-1.8lb/R1SMilkCh.png', 
+      image: 'assets/optimized/r1-whey-1.8lb/R1SMilkCh.webp',
       status: 'Bajo pedido',
       highlights: [
         '22g de proteína por servicio',
@@ -58,12 +58,12 @@ window.SP_DATA = {
       ],
       usage: 'Mezclar 1 scoop en 6 a 8 oz de agua fría o leche descremada.',
       flavors: [
-        { name: 'Milk Chocolate', image: 'assets/r1-whey-1.8lb/R1SMilkCh.png' },
-        { name: 'Chocolate Peanut Butter', image: 'assets/r1-whey-1.8lb/R1SChocP.png' },
-        { name: 'Pistachio', image: 'assets/r1-whey-1.8lb/R1SPist.png' },
-        { name: 'Salted Caramel', image: 'assets/r1-whey-1.8lb/R1SCaramS.png' },
-        { name: 'Vanilla Creme', image: 'assets/r1-whey-1.8lb/R1SVain.png' },
-        { name: 'Cookies & Creme', image: 'assets/r1-whey-1.8lb/R1SCookiC.png' }
+        { name: 'Milk Chocolate', image: 'assets/optimized/r1-whey-1.8lb/R1SMilkCh.webp' },
+        { name: 'Chocolate Peanut Butter', image: 'assets/optimized/r1-whey-1.8lb/R1SChocP.webp' },
+        { name: 'Pistachio', image: 'assets/optimized/r1-whey-1.8lb/R1SPist.webp' },
+        { name: 'Salted Caramel', image: 'assets/optimized/r1-whey-1.8lb/R1SCaramS.webp' },
+        { name: 'Vanilla Creme', image: 'assets/optimized/r1-whey-1.8lb/R1SVain.webp' },
+        { name: 'Cookies & Creme', image: 'assets/optimized/r1-whey-1.8lb/R1SCookiC.webp' }
       ]
     },
     { 
@@ -72,7 +72,7 @@ window.SP_DATA = {
       presentation: '2.0 lb', 
       price: 45.00, 
       category: 'Proteínas', 
-      image: 'assets/r1-whey-2lb/R1BanaCr.png', 
+      image: 'assets/optimized/r1-whey-2lb/R1BanaCr.webp',
       status: 'Bajo pedido',
       highlights: [
         '24g de proteína 100% de suero (WPC, WPI, WPH)',
@@ -87,15 +87,15 @@ window.SP_DATA = {
       ],
       usage: 'Mezclar 1 scoop en 6 a 8 oz de agua fría, leche o tu bebida favorita en cualquier momento del día para alcanzar tu meta de proteína.',
       flavors: [
-        { name: 'Banana Creme', image: 'assets/r1-whey-2lb/R1BanaCr.png' },
-        { name: 'Café Mocha', image: 'assets/r1-whey-2lb/R1CafM.png' },
-        { name: 'Chocolate Fudge', image: 'assets/r1-whey-2lb/R1ChocoF.png' },
-        { name: 'Chocolate Peanut Butter', image: 'assets/r1-whey-2lb/R1ChocoPea.png' },
-        { name: 'Cookies & Creme', image: 'assets/r1-whey-2lb/R1CookCr.png' },
-        { name: 'Fruity Cereal', image: 'assets/r1-whey-2lb/R1FruitC.png' },
-        { name: 'Salted Caramel', image: 'assets/r1-whey-2lb/R1SaltedCar.png' },
-        { name: 'Strawberries & Creme', image: 'assets/r1-whey-2lb/R1StrawberCre.png' },
-        { name: 'Vanilla', image: 'assets/r1-whey-2lb/R1Vaini.png' }
+        { name: 'Banana Creme', image: 'assets/optimized/r1-whey-2lb/R1BanaCr.webp' },
+        { name: 'Café Mocha', image: 'assets/optimized/r1-whey-2lb/R1CafM.webp' },
+        { name: 'Chocolate Fudge', image: 'assets/optimized/r1-whey-2lb/R1ChocoF.webp' },
+        { name: 'Chocolate Peanut Butter', image: 'assets/optimized/r1-whey-2lb/R1ChocoPea.webp' },
+        { name: 'Cookies & Creme', image: 'assets/optimized/r1-whey-2lb/R1CookCr.webp' },
+        { name: 'Fruity Cereal', image: 'assets/optimized/r1-whey-2lb/R1FruitC.webp' },
+        { name: 'Salted Caramel', image: 'assets/optimized/r1-whey-2lb/R1SaltedCar.webp' },
+        { name: 'Strawberries & Creme', image: 'assets/optimized/r1-whey-2lb/R1StrawberCre.webp' },
+        { name: 'Vanilla', image: 'assets/optimized/r1-whey-2lb/R1Vaini.webp' }
       ]
     },
     { 
@@ -104,7 +104,7 @@ window.SP_DATA = {
       presentation: '6 lb', 
       price: 42.00, 
       category: 'Ganadores de peso', 
-      image: 'assets/mass-gainerR1/R1Mass-ChocoFud.png', 
+      image: 'assets/optimized/mass-gainerR1/R1Mass-ChocoFud.webp',
       status: 'Bajo pedido',
       highlights: [
         'Más de 1,220 calorías densas por servicio',
@@ -119,10 +119,10 @@ window.SP_DATA = {
       ],
       usage: 'Mezclar 2 scoops colmados en 16 a 20 oz de agua o leche entera post-entrenamiento o entre comidas principales.',
       flavors: [
-        { name: 'Chocolate Fudge', image: 'assets/mass-gainerR1/R1Mass-ChocoFud.png' },
-        { name: 'Chocolate Peanut Butter', image: 'assets/mass-gainerR1/R1Mass-ChocoPeanButt.png' },
-        { name: 'Cookies & Creme', image: 'assets/mass-gainerR1/R1Mass-CookCrea.png' },
-        { name: 'Strawberries & Cream', image: 'assets/mass-gainerR1/R1Mass-StrawCre.png' },
+        { name: 'Chocolate Fudge', image: 'assets/optimized/mass-gainerR1/R1Mass-ChocoFud.webp' },
+        { name: 'Chocolate Peanut Butter', image: 'assets/optimized/mass-gainerR1/R1Mass-ChocoPeanButt.webp' },
+        { name: 'Cookies & Creme', image: 'assets/optimized/mass-gainerR1/R1Mass-CookCrea.webp' },
+        { name: 'Strawberries & Cream', image: 'assets/optimized/mass-gainerR1/R1Mass-StrawCre.webp' },
         { name: 'Vanilla', image: 'assets/mass-gainerR1/R1Mass-Vanilla.webp' }
       ]
     },
@@ -132,7 +132,7 @@ window.SP_DATA = {
       presentation: '6 lb', 
       price: 41.00, 
       category: 'Ganadores de peso', 
-      image: 'assets/mass-gainermutant6lb/MutantMassTripleChoc.png', 
+      image: 'assets/optimized/mass-gainermutant6lb/MutantMassTripleChoc.webp',
       status: 'Bajo pedido',
       highlights: [
         '1,270 calorías extremas por porción con agua',
@@ -147,9 +147,9 @@ window.SP_DATA = {
       ],
       usage: 'Mezclar 4 scoops en 16 a 24 oz de agua fría o leche entera. Puede dividirse en 2 scoops por la mañana y 2 scoops post-entreno.',
       flavors: [
-        { name: 'Triple Chocolate', image: 'assets/mass-gainermutant6lb/MutantMassTripleChoc.png' },
-        { name: 'Cookies & Cream', image: 'assets/mass-gainermutant6lb/MutantMassCookCr.webp' },
-        { name: 'Vanilla Ice Cream', image: 'assets/mass-gainermutant6lb/MutantMassVanill.jpg' }
+        { name: 'Triple Chocolate', image: 'assets/optimized/mass-gainermutant6lb/MutantMassTripleChoc.webp' },
+        { name: 'Cookies & Cream', image: 'assets/optimized/mass-gainermutant6lb/MutantMassCookCr.webp' },
+        { name: 'Vanilla Ice Cream', image: 'assets/optimized/mass-gainermutant6lb/MutantMassVanill.webp' }
       ]
     },
     { 
@@ -158,7 +158,7 @@ window.SP_DATA = {
       presentation: '12 lb', 
       price: 58.00, 
       category: 'Ganadores de peso', 
-      image: 'assets/mass-gainermutant12lb/MutantMassChoco.jpg', 
+      image: 'assets/optimized/mass-gainermutant12lb/MutantMassChoco.webp',
       status: 'Bajo pedido',
       highlights: [
         'Presentación económica en bolsa reforzada con asas',
@@ -173,9 +173,9 @@ window.SP_DATA = {
       ],
       usage: 'Mezclar 4 scoops en 16 a 24 oz de agua o leche. Tomar después de entrenar o como colación hipercalórica.',
       flavors: [
-        { name: 'Triple Chocolate', image: 'assets/mass-gainermutant12lb/MutantMassChoco.jpg' },
-        { name: 'Cookies & Cream', image: 'assets/mass-gainermutant12lb/MutantMassCookCre.jpg' },
-        { name: 'Vanilla Ice Cream', image: 'assets/mass-gainermutant12lb/MutantMassVanil.jpg' }
+        { name: 'Triple Chocolate', image: 'assets/optimized/mass-gainermutant12lb/MutantMassChoco.webp' },
+        { name: 'Cookies & Cream', image: 'assets/optimized/mass-gainermutant12lb/MutantMassCookCre.webp' },
+        { name: 'Vanilla Ice Cream', image: 'assets/optimized/mass-gainermutant12lb/MutantMassVanil.webp' }
       ]
     },
     { 
@@ -184,7 +184,7 @@ window.SP_DATA = {
       presentation: '20 lb', 
       price: 94.00, 
       category: 'Ganadores de peso', 
-      image: 'assets/mass-gainermutant20lb/mutantchoco.jpg', 
+      image: 'assets/optimized/mass-gainermutant20lb/mutantchoco.webp',
       status: 'Bajo pedido',
       highlights: [
         'Saco masivo de 20 lb: máximo valor por inversión',
@@ -199,9 +199,9 @@ window.SP_DATA = {
       ],
       usage: 'Mezclar 4 scoops en 20 oz de agua o leche. Consumir dividido a lo largo del día o post-entreno.',
       flavors: [
-        { name: 'Triple Chocolate', image: 'assets/mass-gainermutant20lb/mutantchoco.jpg' },
-        { name: 'Cookies & Cream', image: 'assets/mass-gainermutant20lb/mutantcookcream.jpg' },
-        { name: 'Vanilla Ice Cream', image: 'assets/mass-gainermutant20lb/mutantvanilla.jpg' }
+        { name: 'Triple Chocolate', image: 'assets/optimized/mass-gainermutant20lb/mutantchoco.webp' },
+        { name: 'Cookies & Cream', image: 'assets/optimized/mass-gainermutant20lb/mutantcookcream.webp' },
+        { name: 'Vanilla Ice Cream', image: 'assets/optimized/mass-gainermutant20lb/mutantvanilla.webp' }
       ]
     },
     { 
@@ -210,7 +210,7 @@ window.SP_DATA = {
       presentation: '60 cápsulas (1 unidad)', 
       price: 22.00, 
       category: 'Otros', 
-      image: 'assets/quemadores/Lipo6-black.jpg', 
+      image: 'assets/optimized/quemadores/Lipo6-black.webp',
       status: 'Disponible / bajo pedido' 
     },
     { 
@@ -219,7 +219,7 @@ window.SP_DATA = {
       presentation: '2 unidades (Dúo Pack)', 
       price: 36.00, 
       category: 'Otros', 
-      image: 'assets/quemadores/Duo-Lipo6.jpg?v=3', 
+      image: 'assets/optimized/quemadores/Duo-Lipo6.webp?v=3',
       status: 'Disponible / bajo pedido' 
     }
   ],
@@ -229,28 +229,28 @@ window.SP_DATA = {
       description: 'Mutant Mass Extreme 6 lb + Olympus Creatina 60 servidas', 
       price: 49.00, 
       badge: 'Destacado', 
-      image: 'assets/combos/Combo Volumen.jpg' 
+      image: 'assets/optimized/combos/Combo Volumen.webp'
     },
     { 
       name: 'Combo Creatina Pro', 
       description: 'One of One Creatine 200 servidas + Creakong CX8', 
       price: 46.99, 
       badge: 'Alto valor', 
-      image: 'assets/combos/Combo Creatina Pro.jpg' 
+      image: 'assets/optimized/combos/Combo Creatina Pro.webp'
     },
     { 
       name: 'Combo Volumen Plus', 
       description: 'Mutant Mass Extreme 6 lb + Creakong CX8', 
       price: 50.99, 
       badge: 'Volumen', 
-      image: 'assets/combos/Combo Volumen Plus.jpg' 
+      image: 'assets/optimized/combos/Combo Volumen Plus.webp'
     },
     { 
       name: 'Combo Proteína y Creatina', 
       description: 'R1 Source7 1.8 lb + Creakong CX8', 
       price: 44.99, 
       badge: 'Equilibrado', 
-      image: 'assets/combos/Combo Proteína y Creatina.jpg' 
+      image: 'assets/optimized/combos/Combo Proteína y Creatina.webp'
     }
   ]
 };
