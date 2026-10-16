@@ -13,7 +13,7 @@ window.SP_DATA = {
       id: 'nutrex60', 
       name: 'Nutrex Creatine Monohydrate', 
       presentation: '60 servidas', 
-      price: 14.00, 
+      price: 13.75, 
       category: 'Creatinas', 
       image: 'assets/creatinas/nutrex.webp', 
       status: 'Disponible / bajo pedido' 
