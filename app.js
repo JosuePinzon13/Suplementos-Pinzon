@@ -131,3 +131,24 @@ navMenu.addEventListener('click', e => {
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
+// =====================================================
+// CONTROL DEL CARRUSEL DE CLIENTES
+// =====================================================
+const clientsTrack = document.getElementById('clientsTrack');
+const prevClientBtn = document.getElementById('prevClientBtn');
+const nextClientBtn = document.getElementById('nextClientBtn');
+
+if (clientsTrack && prevClientBtn && nextClientBtn) {
+  const getClientScrollDistance = () => {
+    const card = clientsTrack.querySelector('.client-card');
+    return card ? card.offsetWidth + 20 : 300;
+  };
+
+  prevClientBtn.addEventListener('click', () => {
+    clientsTrack.scrollBy({ left: -getClientScrollDistance(), behavior: 'smooth' });
+  });
+
+  nextClientBtn.addEventListener('click', () => {
+    clientsTrack.scrollBy({ left: getClientScrollDistance(), behavior: 'smooth' });
+  });
+}

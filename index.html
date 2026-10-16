@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0a0a0b" />
   <meta name="description" content="Suplementos Pinzón: creatinas, proteínas, ganadores de peso y suplementos deportivos en Panamá. Productos originales, disponibles y bajo pedido." />
   <title>Suplementos Pinzón | Panamá</title>
-  <link rel="stylesheet" href="styles.css?v=29" />
+  <link rel="stylesheet" href="styles.css?v=30" />
 </head>
 <body>
   <header class="site-header">
@@ -100,15 +100,61 @@
       </div>
     </section>
 
+    <!-- SECCIÓN CLIENTES CON CARRUSEL -->
     <section class="section clients-section" id="clientes">
       <div class="section-head">
         <div>
           <p class="eyebrow">CLIENTES</p>
           <h2>Confianza que se construye entrega a entrega</h2>
         </div>
-        <p>Próximamente iremos mostrando más entregas reales y experiencias de nuestros clientes.</p>
+        <p>Entregas reales y clientes que confían en nuestro servicio.</p>
       </div>
-      <div class="client-placeholder">
+
+      <div class="carousel-wrapper">
+        <button class="carousel-nav-btn prev" id="prevClientBtn" aria-label="Anterior">‹</button>
+        
+        <div class="carousel-track" id="clientsTrack">
+          <!-- Tarjeta 1 -->
+          <article class="client-card">
+            <div class="client-card-img">
+              <img src="assets/clientes/chanap.jpeg" alt="Entrega a cliente" loading="lazy" decoding="async" />
+            </div>
+            <div class="client-card-content">
+              <span class="client-verified">✓ Entrega verificada</span>
+              <p class="client-name">Entrega realizada</p>
+              <p class="client-caption">Compromiso y puntualidad con nuestros clientes.</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 2 -->
+          <article class="client-card">
+            <div class="client-card-img">
+              <img src="assets/clientes/cans.jpeg" alt="Entrega a cliente" loading="lazy" decoding="async" />
+            </div>
+            <div class="client-card-content">
+              <span class="client-verified">✓ Entrega verificada</span>
+              <p class="client-name">Entrega realizada</p>
+              <p class="client-caption">Productos 100% originales listos para el progreso.</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3 -->
+          <article class="client-card">
+            <div class="client-card-img">
+              <img src="assets/clientes/ricard.jpeg" alt="Entrega a cliente" loading="lazy" decoding="async" />
+            </div>
+            <div class="client-card-content">
+              <span class="client-verified">✓ Entrega verificada</span>
+              <p class="client-name">Entrega realizada</p>
+              <p class="client-caption">Atención directa y entrega coordinada sin complicaciones.</p>
+            </div>
+          </article>
+        </div>
+
+        <button class="carousel-nav-btn next" id="nextClientBtn" aria-label="Siguiente">›</button>
+      </div>
+
+      <div class="client-placeholder" style="margin-top: 1.5rem;">
         <div style="width: 58px; height: 58px; min-width: 58px; max-width: 58px; border-radius: 50%; border: 2px solid #ff2a2a; background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; box-sizing: border-box;">
           <img src="assets/logo.webp" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; padding: 4px; display: block;">
         </div>
@@ -138,7 +184,7 @@
     <p class="footer-note">Los suplementos no sustituyen una alimentación equilibrada ni asesoría profesional.</p>
   </footer>
 
-  <script src="data.js?v=29"></script>
-  <script src="app.js?v=29"></script>
+  <script src="data.js?v=30"></script>
+  <script src="app.js?v=30"></script>
 </body>
 </html>
