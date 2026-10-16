@@ -70,7 +70,7 @@ function productCard(p) {
   return `
     <article class="product-card" data-category="${p.category}">
       <div class="product-image ${p.id}">
-        <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'image-fallback\\'>${p.name}</div>'">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.parentElement.innerHTML='<div class=\\'image-fallback\\'>${p.name}</div>'">
       </div>
       <div class="product-info">
         <div class="product-meta"><span>${p.category}</span><span>${p.presentation}</span></div>
@@ -102,12 +102,12 @@ filters.addEventListener('click', e => {
 
 renderProducts();
 
-// Render de combos con soporte para imagen
+// Render de combos con soporte para lazy loading y decoding async
 comboGrid.innerHTML = combos.map(c => `
   <article class="combo-card">
     ${c.image ? `
       <div class="combo-img-wrap">
-        <img src="${c.image}" alt="${c.name}" loading="lazy">
+        <img src="${c.image}" alt="${c.name}" loading="lazy" decoding="async">
       </div>
     ` : ''}
     <span class="combo-badge">${c.badge}</span>
@@ -131,6 +131,7 @@ navMenu.addEventListener('click', e => {
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
 // =====================================================
 // CONTROL DEL CARRUSEL DE CLIENTES
 // =====================================================
