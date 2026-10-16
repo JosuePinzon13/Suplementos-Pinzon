@@ -113,7 +113,7 @@ comboGrid.innerHTML = combos.map(c => `
   <article class="combo-card">
     ${c.image ? `
       <div class="combo-img-wrap">
-        <img src="${c.image}" alt="${c.name}" loading="lazy" decoding="async">
+        <img src="${c.image}" alt="${c.name}" class="combo-image" loading="lazy" decoding="async" onload="this.classList.add('is-loaded')">
       </div>
     ` : ''}
     <span class="combo-badge">${c.badge}</span>
