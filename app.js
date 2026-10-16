@@ -80,7 +80,13 @@ function productCard(p) {
         ${flavorsHTML}
         ${detailsHTML}
 
-        <div class="price-row"><strong>${money(p.price)}</strong><small>${p.status}</small></div>
+        <div class="price-row">
+          <span class="price-values">
+            <strong>${money(p.price)}</strong>
+            ${p.originalPrice != null ? `<del class="original-price">${money(p.originalPrice)}</del>` : ''}
+          </span>
+          <small>${p.status}</small>
+        </div>
         <a class="card-btn" href="${whatsappFor(p.name, defaultFlavor)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
       </div>
     </article>`;

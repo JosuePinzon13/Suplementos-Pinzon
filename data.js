@@ -4,10 +4,11 @@ window.SP_DATA = {
       id: 'olympus', 
       name: 'Olympus Supps Creatina Monohidratada', 
       presentation: '60 servidas', 
-      price: 12.50, 
+      price: 12.00,
+      originalPrice: 12.50,
       category: 'Creatinas', 
       image: 'assets/creatinas/olympus-final.webp', 
-      status: 'Disponible / bajo pedido' 
+      status: 'Preventa'
     },
     { 
       id: 'nutrex60', 
