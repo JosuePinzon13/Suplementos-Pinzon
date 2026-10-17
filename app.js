@@ -26,9 +26,18 @@ function observeReveals(container) {
 
 function money(value) { return value == null ? 'Consultar' : `$${value.toFixed(2)}`; }
 
+function productStatusClass(status = '') {
+  const normalizedStatus = status.toLowerCase();
+  if (normalizedStatus.includes('preventa')) return 'product-status--preorder';
+  if (normalizedStatus.includes('encargo') || normalizedStatus.includes('pedido') || normalizedStatus.includes('disponible')) {
+    return 'product-status--order';
+  }
+  return 'product-status--neutral';
+}
+
 function whatsappFor(item, flavor = '') {
   const flavorText = flavor ? ` en sabor ${flavor}` : '';
-  const msg = `Hola, vi ${item}${flavorText} en la página de Suplementos Pinzón y quiero consultar disponibilidad.`;
+  const msg = `Hola, vi ${item}${flavorText} en la página de Suplementos Pinzón y quiero consultar disponibilidad y tiempo de entrega.`;
   return waBase + encodeURIComponent(msg);
 }
 
@@ -106,7 +115,7 @@ function productCard(p) {
             <strong>${money(p.price)}</strong>
             ${p.originalPrice != null ? `<del class="original-price">${money(p.originalPrice)}</del>` : ''}
           </span>
-          <small>${p.status}</small>
+          <small class="product-status ${productStatusClass(p.status)}">${p.status}</small>
         </div>
         <a class="card-btn" href="${whatsappFor(p.name, defaultFlavor)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
       </div>

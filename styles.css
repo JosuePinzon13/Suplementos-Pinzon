@@ -299,9 +299,19 @@ a[href*="wa.me"].btn-secondary:hover {
   line-height: 1.25;
 }
 
-.product-card.is-featured .price-row small {
-  background: #f0f8f2;
-  color: #217a3e;
+.price-row .product-status--preorder {
+  background: #fff4df;
+  color: #8a5200;
+}
+
+.price-row .product-status--order {
+  background: #fff0f0;
+  color: #9f2228;
+}
+
+.price-row .product-status--neutral {
+  background: #f1f1f3;
+  color: #55555f;
 }
 
 .card-btn {

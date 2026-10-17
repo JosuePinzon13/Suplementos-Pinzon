@@ -18,7 +18,7 @@ window.SP_DATA = {
       price: 13.75, 
       category: 'Creatinas', 
       image: 'assets/creatinas/nutrex.webp', 
-      status: 'Disponible / bajo pedido',
+      status: 'Por encargo',
       featured: true
     },
     { 
@@ -28,7 +28,7 @@ window.SP_DATA = {
       price: 12.00, 
       category: 'Creatinas', 
       image: 'assets/optimized/creatinas/creakong.webp?v=3',
-      status: 'Disponible / bajo pedido' 
+      status: 'Por encargo'
     },
     { 
       id: 'oneofone', 
@@ -37,7 +37,7 @@ window.SP_DATA = {
       price: 37.00, 
       category: 'Creatinas', 
       image: 'assets/creatinas/oneofone.webp', 
-      status: 'Bajo pedido' 
+      status: 'Por encargo'
     },
     { 
       id: 'r1source7', 
@@ -46,7 +46,7 @@ window.SP_DATA = {
       price: 35.00, 
       category: 'Proteínas', 
       image: 'assets/optimized/r1-whey-1.8lb/R1SMilkCh.webp',
-      status: 'Bajo pedido',
+      status: 'Por encargo',
       highlights: [
         '22g de proteína por servicio',
         '7 fuentes de absorción gradual',
@@ -75,7 +75,7 @@ window.SP_DATA = {
       price: 45.00, 
       category: 'Proteínas', 
       image: 'assets/optimized/r1-whey-2lb/R1BanaCr.webp',
-      status: 'Bajo pedido',
+      status: 'Por encargo',
       highlights: [
         '24g de proteína 100% de suero (WPC, WPI, WPH)',
         '11g de EAAs y más de 5g de BCAAs naturales',
@@ -107,7 +107,7 @@ window.SP_DATA = {
       price: 42.00, 
       category: 'Ganadores de peso', 
       image: 'assets/optimized/mass-gainerR1/R1Mass-ChocoFud.webp',
-      status: 'Bajo pedido',
+      status: 'Por encargo',
       highlights: [
         'Más de 1,220 calorías densas por servicio',
         '40g de proteína de suero de alta calidad',
@@ -135,7 +135,7 @@ window.SP_DATA = {
       price: 41.00, 
       category: 'Ganadores de peso', 
       image: 'assets/optimized/mass-gainermutant6lb/MutantMassTripleChoc.webp',
-      status: 'Bajo pedido',
+      status: 'Por encargo',
       highlights: [
         '1,270 calorías extremas por porción con agua',
         '46g de proteína pura de suero lácteo',
@@ -162,7 +162,7 @@ window.SP_DATA = {
       price: 58.00, 
       category: 'Ganadores de peso', 
       image: 'assets/optimized/mass-gainermutant12lb/MutantMassChoco.webp',
-      status: 'Bajo pedido',
+      status: 'Por encargo',
       highlights: [
         'Presentación económica en bolsa reforzada con asas',
         '46g de proteína y 255g de carbohidratos por toma',
@@ -188,7 +188,7 @@ window.SP_DATA = {
       price: 94.00, 
       category: 'Ganadores de peso', 
       image: 'assets/optimized/mass-gainermutant20lb/mutantchoco.webp',
-      status: 'Bajo pedido',
+      status: 'Por encargo',
       highlights: [
         'Saco masivo de 20 lb: máximo valor por inversión',
         '32 servicios de pura potencia calórica y proteica',
@@ -214,7 +214,7 @@ window.SP_DATA = {
       price: 22.00, 
       category: 'Otros', 
       image: 'assets/optimized/quemadores/Lipo6-black.webp',
-      status: 'Disponible / bajo pedido' 
+      status: 'Por encargo'
     },
     { 
       id: 'lipo6', 
@@ -223,7 +223,7 @@ window.SP_DATA = {
       price: 36.00, 
       category: 'Otros', 
       image: 'assets/optimized/quemadores/Duo-Lipo6.webp?v=3',
-      status: 'Disponible / bajo pedido',
+      status: 'Por encargo',
       featured: true
     }
   ],
