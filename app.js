@@ -1,4 +1,5 @@
 const { products, combos } = window.SP_DATA;
+const featuredProductGrid = document.getElementById('featuredProductGrid');
 const productGrid = document.getElementById('productGrid');
 const comboGrid = document.getElementById('comboGrid');
 const filters = document.getElementById('filters');
@@ -92,20 +93,28 @@ function productCard(p) {
     </article>`;
 }
 
+function renderFeaturedProducts() {
+  featuredProductGrid.innerHTML = products
+    .filter(p => p.featured)
+    .map(productCard)
+    .join('');
+}
+
 function renderProducts(category = 'Todos') {
   const list = category === 'Todos' ? products : products.filter(p => p.category === category);
   productGrid.innerHTML = list.map(productCard).join('');
 }
 
-const categories = ['Todos', ...new Set(products.map(p => p.category))];
+const categories = ['Todos', 'Creatinas', 'Proteínas', 'Ganadores de peso', 'Otros'];
 filters.innerHTML = categories.map((c, i) => `<button class="filter-btn ${i===0?'active':''}" data-filter="${c}">${c}</button>`).join('');
 
 filters.addEventListener('click', e => {
   const btn = e.target.closest('.filter-btn'); if (!btn) return;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active'); renderProducts(btn.dataset.filter);
 });
 
+renderFeaturedProducts();
 renderProducts();
 
 // Render de combos con soporte para lazy loading y decoding async

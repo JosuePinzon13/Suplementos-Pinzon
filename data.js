@@ -8,7 +8,8 @@ window.SP_DATA = {
       originalPrice: 12.50,
       category: 'Creatinas', 
       image: 'assets/optimized/creatinas/olympus-final.webp',
-      status: 'Preventa'
+      status: 'Preventa',
+      featured: true
     },
     { 
       id: 'nutrex60', 
@@ -17,7 +18,8 @@ window.SP_DATA = {
       price: 13.75, 
       category: 'Creatinas', 
       image: 'assets/creatinas/nutrex.webp', 
-      status: 'Disponible / bajo pedido' 
+      status: 'Disponible / bajo pedido',
+      featured: true
     },
     { 
       id: 'creakong', 
@@ -150,7 +152,8 @@ window.SP_DATA = {
         { name: 'Triple Chocolate', image: 'assets/optimized/mass-gainermutant6lb/MutantMassTripleChoc.webp' },
         { name: 'Cookies & Cream', image: 'assets/optimized/mass-gainermutant6lb/MutantMassCookCr.webp' },
         { name: 'Vanilla Ice Cream', image: 'assets/optimized/mass-gainermutant6lb/MutantMassVanill.webp' }
-      ]
+      ],
+      featured: true
     },
     { 
       id: 'mutantmass-12lb', 
@@ -220,7 +223,8 @@ window.SP_DATA = {
       price: 36.00, 
       category: 'Otros', 
       image: 'assets/optimized/quemadores/Duo-Lipo6.webp?v=3',
-      status: 'Disponible / bajo pedido' 
+      status: 'Disponible / bajo pedido',
+      featured: true
     }
   ],
   combos: [
