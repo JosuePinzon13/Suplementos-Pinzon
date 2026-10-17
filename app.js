@@ -88,8 +88,9 @@ function productCard(p) {
   ` : '';
 
   return `
-    <article class="product-card" data-category="${p.category}">
+    <article class="product-card${p.featured ? ' is-featured' : ''}" data-category="${p.category}">
       <div class="product-image ${p.id}">
+        ${p.featured ? '<span class="product-badge">Destacado</span>' : ''}
         <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.parentElement.innerHTML='<div class=\\'image-fallback\\'>${p.name}</div>'">
       </div>
       <div class="product-info">
