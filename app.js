@@ -4,6 +4,25 @@ const productGrid = document.getElementById('productGrid');
 const comboGrid = document.getElementById('comboGrid');
 const filters = document.getElementById('filters');
 const waBase = 'https://wa.me/50766897862?text=';
+const revealObserver = 'IntersectionObserver' in window
+  ? new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' })
+  : null;
+
+function observeReveals(container) {
+  if (!revealObserver) return;
+  container.querySelectorAll('.section-head, .product-card, .combo-card, .event-card, .about-copy, .carousel-wrapper, .contact-actions')
+    .forEach(element => {
+      if (element.classList.contains('reveal')) return;
+      element.classList.add('reveal');
+      revealObserver.observe(element);
+    });
+}
 
 function money(value) { return value == null ? 'Consultar' : `$${value.toFixed(2)}`; }
 
@@ -98,11 +117,13 @@ function renderFeaturedProducts() {
     .filter(p => p.featured)
     .map(productCard)
     .join('');
+  observeReveals(featuredProductGrid);
 }
 
 function renderProducts(category = 'Todos') {
   const list = category === 'Todos' ? products : products.filter(p => p.category === category);
   productGrid.innerHTML = list.map(productCard).join('');
+  observeReveals(productGrid);
 }
 
 const categories = ['Todos', 'Creatinas', 'Proteínas', 'Ganadores de peso', 'Otros'];
@@ -133,6 +154,7 @@ comboGrid.innerHTML = combos.map(c => `
       <a href="${whatsappFor(c.name)}" target="_blank" rel="noopener">Pedir combo →</a>
     </div>
   </article>`).join('');
+observeReveals(document);
 
 const menuBtn = document.getElementById('menuBtn');
 const navMenu = document.getElementById('navMenu');
