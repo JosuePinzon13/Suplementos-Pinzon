@@ -4,6 +4,13 @@ const productGrid = document.getElementById('productGrid');
 const comboGrid = document.getElementById('comboGrid');
 const filters = document.getElementById('filters');
 const waBase = 'https://wa.me/50766897862?text=';
+const cart = [];
+const cartOpenBtn = document.getElementById('cartOpenBtn');
+const cartDialog = document.getElementById('cartDialog');
+const cartItems = document.getElementById('cartItems');
+const cartCount = document.getElementById('cartCount');
+const cartTotal = document.getElementById('cartTotal');
+const cartCheckout = document.getElementById('cartCheckout');
 const revealObserver = 'IntersectionObserver' in window
   ? new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -35,28 +42,124 @@ function productStatusClass(status = '') {
   return 'product-status--neutral';
 }
 
-function whatsappFor(item, flavor = '') {
-  const flavorText = flavor ? ` en sabor ${flavor}` : '';
-  const msg = `Hola, vi ${item}${flavorText} en la página de Suplementos Pinzón y quiero consultar disponibilidad y tiempo de entrega.`;
-  return waBase + encodeURIComponent(msg);
+function addToCart(type, id, card) {
+  const itemData = (type === 'product' ? products : combos).find(item => item.id === id);
+  if (!itemData) return;
+
+  const selectedFlavor = type === 'product'
+    ? card.querySelector('.flavor-select')?.selectedOptions[0]?.textContent.trim() || ''
+    : '';
+  const key = `${type}:${id}:${selectedFlavor}`;
+  const existingItem = cart.find(item => item.key === key);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({
+      key,
+      name: itemData.name,
+      presentation: itemData.presentation || '',
+      price: itemData.price,
+      flavor: selectedFlavor,
+      quantity: 1
+    });
+  }
+
+  renderCart();
+  const addButton = card.querySelector('.add-to-cart-btn');
+  if (addButton) {
+    const originalText = addButton.textContent;
+    addButton.textContent = '¡Agregado!';
+    window.setTimeout(() => {
+      if (addButton.isConnected) addButton.textContent = originalText;
+    }, 1200);
+  }
 }
 
-// Función global para cambiar la foto y el enlace de WhatsApp al elegir un sabor
-window.changeFlavor = function(selectEl, productId, productName) {
+function renderCart() {
+  const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  cartCount.textContent = String(itemCount);
+  cartOpenBtn.setAttribute('aria-label', `Ver pedido, ${itemCount} ${itemCount === 1 ? 'producto' : 'productos'}`);
+  cartTotal.textContent = money(total);
+  cartCheckout.setAttribute('aria-disabled', String(cart.length === 0));
+  cartCheckout.tabIndex = cart.length === 0 ? -1 : 0;
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<p class="cart-empty">Tu carrito está vacío. Agrega productos o combos para armar tu pedido.</p>';
+    cartCheckout.removeAttribute('href');
+    return;
+  }
+
+  cartItems.innerHTML = cart.map(item => `
+    <article class="cart-item">
+      <div class="cart-item-info">
+        <h3>${item.name}</h3>
+        <p>${[item.presentation, item.flavor].filter(Boolean).join(' · ')}</p>
+        <strong>${money(item.price)} c/u</strong>
+      </div>
+      <div class="cart-item-controls" aria-label="Cantidad de ${item.name}">
+        <button type="button" data-cart-action="decrease" data-key="${item.key}" aria-label="Disminuir cantidad" ${item.quantity === 1 ? 'disabled' : ''}>−</button>
+        <span>${item.quantity}</span>
+        <button type="button" data-cart-action="increase" data-key="${item.key}" aria-label="Aumentar cantidad">+</button>
+        <button type="button" class="cart-remove" data-cart-action="remove" data-key="${item.key}" aria-label="Quitar ${item.name} del pedido">Quitar</button>
+      </div>
+      <strong class="cart-item-subtotal">${money(item.price * item.quantity)}</strong>
+    </article>
+  `).join('');
+
+  const orderLines = cart.map(item => {
+    const details = [item.presentation, item.flavor].filter(Boolean).join(' · ');
+    return `• ${item.name}${details ? ` (${details})` : ''} × ${item.quantity} — ${money(item.price * item.quantity)}`;
+  });
+  const message = [
+    'Hola, quiero hacer este pedido en Suplementos Pinzón:',
+    '',
+    ...orderLines,
+    '',
+    `Total estimado: ${money(total)}`,
+    'Quedo pendiente de confirmar disponibilidad y coordinar la entrega.'
+  ].join('\n');
+  cartCheckout.href = waBase + encodeURIComponent(message);
+}
+
+cartOpenBtn.addEventListener('click', () => cartDialog.showModal());
+document.getElementById('cartCloseBtn').addEventListener('click', () => cartDialog.close());
+cartDialog.addEventListener('click', event => {
+  if (event.target === cartDialog) cartDialog.close();
+});
+
+document.addEventListener('click', event => {
+  const addButton = event.target.closest('.add-to-cart-btn');
+  if (addButton) {
+    addToCart(addButton.dataset.cartType, addButton.dataset.cartId, addButton.closest('.product-card, .combo-card'));
+    return;
+  }
+
+  const cartAction = event.target.closest('[data-cart-action]');
+  if (!cartAction) return;
+  const itemIndex = cart.findIndex(item => item.key === cartAction.dataset.key);
+  if (itemIndex === -1) return;
+
+  if (cartAction.dataset.cartAction === 'increase') cart[itemIndex].quantity += 1;
+  if (cartAction.dataset.cartAction === 'decrease' && cart[itemIndex].quantity > 1) cart[itemIndex].quantity -= 1;
+  if (cartAction.dataset.cartAction === 'remove') cart.splice(itemIndex, 1);
+  renderCart();
+});
+
+renderCart();
+
+// Actualiza la imagen y la descripción al elegir un sabor.
+window.changeFlavor = function(selectEl) {
   const card = selectEl.closest('.product-card');
   const imgEl = card.querySelector('.product-image img');
-  const btnEl = card.querySelector('.card-btn');
   const noteEl = card.querySelector('.flavor-note');
   const selectedOption = selectEl.options[selectEl.selectedIndex];
   
   const newImage = selectEl.value;
-  const flavorName = selectedOption.text;
 
   if (imgEl && newImage) {
     imgEl.src = newImage;
-  }
-  if (btnEl) {
-    btnEl.href = whatsappFor(productName, flavorName);
   }
   if (noteEl) {
     noteEl.textContent = selectedOption.dataset.description || '';
@@ -66,12 +169,11 @@ window.changeFlavor = function(selectEl, productId, productName) {
 function productCard(p) {
   // 1. Selector de sabores (si existen)
   const hasFlavors = p.flavors && p.flavors.length > 0;
-  const defaultFlavor = hasFlavors ? p.flavors[0].name : '';
   
   const flavorsHTML = hasFlavors ? `
     <div class="flavor-select-wrap">
       <label for="flavor-${p.id}">Sabor:</label>
-      <select id="flavor-${p.id}" class="flavor-select" onchange="changeFlavor(this, '${p.id}', '${p.name}')">
+      <select id="flavor-${p.id}" class="flavor-select" onchange="changeFlavor(this)">
         ${p.flavors.map(f => `<option value="${f.image}" data-description="${f.description || ''}">${f.name}</option>`).join('')}
       </select>
     </div>
@@ -124,7 +226,7 @@ function productCard(p) {
           ${p.savings ? `<span class="savings-badge">Ahorras ${money(p.savings)}</span>` : ''}
           <small class="product-status ${productStatusClass(p.status)}">${p.status}</small>
         </div>
-        <a class="card-btn" href="${whatsappFor(p.name, defaultFlavor)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <button class="card-btn add-to-cart-btn" type="button" data-cart-type="product" data-cart-id="${p.id}">Agregar al carrito</button>
       </div>
     </article>`;
 }
@@ -171,7 +273,7 @@ comboGrid.innerHTML = combos.map(c => `
     <p>${c.description}</p>
     <div class="combo-bottom">
       <strong>${money(c.price)}</strong>
-      <a href="${whatsappFor(c.name)}" target="_blank" rel="noopener">Pedir combo →</a>
+      <button class="add-to-cart-btn" type="button" data-cart-type="combo" data-cart-id="${c.id}">Agregar combo</button>
     </div>
   </article>`).join('');
 observeReveals(document);

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0a0a0b" />
   <meta name="description" content="Suplementos Pinzón: creatinas, proteínas, ganadores de peso y suplementos deportivos en Panamá. Productos originales, disponibles y bajo pedido." />
   <title>Suplementos Pinzón | Panamá</title>
-  <link rel="stylesheet" href="styles.css?v=44" />
+  <link rel="stylesheet" href="styles.css?v=45" />
 </head>
 <body>
   <header class="site-header">
@@ -24,6 +24,10 @@
     </nav>
     <a class="header-cta" href="https://wa.me/50766897862?text=Hola%2C%20vi%20Suplementos%20Pinz%C3%B3n%20y%20quiero%20consultar%20disponibilidad%20y%20precios." target="_blank" rel="noopener">WhatsApp</a>
   </header>
+  <button class="cart-fab" id="cartOpenBtn" type="button" aria-haspopup="dialog" aria-controls="cartDialog">
+    <span>Ver pedido</span>
+    <span class="cart-count" id="cartCount" aria-live="polite">0</span>
+  </button>
 
   <main>
     <section class="hero" id="inicio">
@@ -60,15 +64,15 @@
       <ol class="purchase-guide" aria-label="Cómo hacer un pedido">
         <li>
           <span>01</span>
-          <div><strong>Elige tu producto</strong><small>Revisa presentación y precio.</small></div>
+          <div><strong>Elige tus productos</strong><small>Selecciona los sabores y agrégalos al carrito.</small></div>
         </li>
         <li>
           <span>02</span>
-          <div><strong>Consúltanos por WhatsApp</strong><small>El botón abre una consulta directa.</small></div>
+          <div><strong>Revisa tu pedido</strong><small>Ajusta las cantidades y confirma el total estimado.</small></div>
         </li>
         <li>
           <span>03</span>
-          <div><strong>Confirma disponibilidad</strong><small>Verificamos el producto antes del pedido.</small></div>
+          <div><strong>Envíalo por WhatsApp</strong><small>Confirmamos disponibilidad y coordinamos un punto céntrico para la entrega.</small></div>
         </li>
       </ol>
     </section>
@@ -195,6 +199,7 @@
         <p class="eyebrow">HAZ TU PEDIDO</p>
         <h2>¿Buscas un producto o quieres consultar disponibilidad?</h2>
         <p>Escríbenos directamente. WhatsApp es nuestro canal principal de atención y pedidos.</p>
+        <p class="delivery-info">No contamos con sucursal. Coordinamos la entrega en un punto céntrico que nos quede conveniente a ambos.</p>
         <p class="payment-methods"><strong>Métodos de pago:</strong> Yappy y efectivo.</p>
       </div>
       <div class="contact-actions">
@@ -204,13 +209,34 @@
     </section>
   </main>
 
+  <dialog class="cart-dialog" id="cartDialog" aria-labelledby="cartTitle">
+    <div class="cart-panel">
+      <header class="cart-header">
+        <div>
+          <p class="eyebrow">TU COMPRA</p>
+          <h2 id="cartTitle">Arma tu pedido</h2>
+        </div>
+        <button class="cart-close" id="cartCloseBtn" type="button" aria-label="Cerrar carrito">×</button>
+      </header>
+      <div class="cart-items" id="cartItems" aria-live="polite"></div>
+      <footer class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total estimado</span>
+          <strong id="cartTotal">$0.00</strong>
+        </div>
+        <p>La disponibilidad y entrega se confirman por WhatsApp.</p>
+        <a class="cart-checkout" id="cartCheckout" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1">Enviar pedido por WhatsApp</a>
+      </footer>
+    </div>
+  </dialog>
+
   <footer>
     <img class="footer-logo" src="assets/logo.webp" alt="Suplementos Pinzón" />
     <p>© <span id="year"></span> Suplementos Pinzón. Panamá.</p>
     <p class="footer-note">Los suplementos no sustituyen una alimentación equilibrada ni asesoría profesional.</p>
   </footer>
 
-  <script src="data.js?v=45"></script>
-  <script src="app.js?v=45"></script>
+  <script src="data.js?v=46"></script>
+  <script src="app.js?v=46"></script>
 </body>
 </html>

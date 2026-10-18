@@ -277,6 +277,7 @@ window.SP_DATA = {
   ],
   combos: [
     { 
+      id: 'combo-volumen',
       name: 'Combo Volumen', 
       description: 'Mutant Mass Extreme 6 lb + Olympus Creatina 60 servidas', 
       price: 49.00, 
@@ -285,6 +286,7 @@ window.SP_DATA = {
       image: 'assets/optimized/combos/Combo Volumen.webp'
     },
     { 
+      id: 'combo-creatina-pro',
       name: 'Combo Creatina Pro', 
       description: 'One of One Creatine 200 servidas + Creakong CX8', 
       price: 46.99, 
@@ -293,6 +295,7 @@ window.SP_DATA = {
       image: 'assets/optimized/combos/Combo Creatina Pro.webp'
     },
     { 
+      id: 'combo-volumen-plus',
       name: 'Combo Volumen Plus', 
       description: 'Mutant Mass Extreme 6 lb + Creakong CX8', 
       price: 50.99, 
@@ -301,6 +304,7 @@ window.SP_DATA = {
       image: 'assets/optimized/combos/Combo Volumen Plus.webp'
     },
     { 
+      id: 'combo-proteina-creatina',
       name: 'Combo Proteína y Creatina', 
       description: 'R1 Source7 1.8 lb + Creakong CX8', 
       price: 44.99, 
