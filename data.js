@@ -166,7 +166,7 @@ window.SP_DATA = {
         '46 g de proteína por porción',
         'Para complementar una alimentación hipercalórica'
       ],
-      description: 'Batido alto en calorías con carbohidratos y proteína para ayudarte a aumentar tu ingesta diaria y apoyar tu objetivo de subir de peso junto con una alimentación adecuada.',
+      description: 'Ganador de peso alto en calorías, con carbohidratos y proteína para ayudarte a aumentar tu ingesta diaria y apoyar tu objetivo de subir de peso junto con una alimentación adecuada.',
       benefits: [
         'Práctico para sumar calorías entre comidas.',
         'Aporta carbohidratos y proteína en una sola preparación.',

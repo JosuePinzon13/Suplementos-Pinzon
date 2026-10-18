@@ -65,7 +65,7 @@ function addToCart(type, id, card) {
     });
   }
 
-  renderCart();
+  renderCart(true);
   const addButton = card.querySelector('.add-to-cart-btn');
   if (addButton) {
     const originalText = addButton.textContent;
@@ -76,10 +76,15 @@ function addToCart(type, id, card) {
   }
 }
 
-function renderCart() {
+function renderCart(animate = false) {
   const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   cartCount.textContent = String(itemCount);
+  if (animate) {
+    cartOpenBtn.classList.remove('is-updated');
+    void cartOpenBtn.offsetWidth;
+    cartOpenBtn.classList.add('is-updated');
+  }
   cartOpenBtn.setAttribute('aria-label', `Ver pedido, ${itemCount} ${itemCount === 1 ? 'producto' : 'productos'}`);
   cartTotal.textContent = money(total);
   cartCheckout.setAttribute('aria-disabled', String(cart.length === 0));
@@ -144,7 +149,7 @@ document.addEventListener('click', event => {
   if (cartAction.dataset.cartAction === 'increase') cart[itemIndex].quantity += 1;
   if (cartAction.dataset.cartAction === 'decrease' && cart[itemIndex].quantity > 1) cart[itemIndex].quantity -= 1;
   if (cartAction.dataset.cartAction === 'remove') cart.splice(itemIndex, 1);
-  renderCart();
+  renderCart(true);
 });
 
 renderCart();
