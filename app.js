@@ -121,6 +121,7 @@ function productCard(p) {
             <strong>${money(p.price)}</strong>
             ${p.originalPrice != null ? `<del class="original-price">${money(p.originalPrice)}</del>` : ''}
           </span>
+          ${p.savings ? `<span class="savings-badge">Ahorras ${money(p.savings)}</span>` : ''}
           <small class="product-status ${productStatusClass(p.status)}">${p.status}</small>
         </div>
         <a class="card-btn" href="${whatsappFor(p.name, defaultFlavor)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
@@ -162,7 +163,10 @@ comboGrid.innerHTML = combos.map(c => `
         <img src="${c.image}" alt="${c.name}" class="combo-image" loading="lazy" decoding="async" onload="this.classList.add('is-loaded')">
       </div>
     ` : ''}
-    <span class="combo-badge">${c.badge}</span>
+    <div class="combo-badges">
+      <span class="combo-badge">${c.badge}</span>
+      ${c.savings ? `<span class="savings-badge">Ahorras ${money(c.savings)}</span>` : ''}
+    </div>
     <h3>${c.name}</h3>
     <p>${c.description}</p>
     <div class="combo-bottom">

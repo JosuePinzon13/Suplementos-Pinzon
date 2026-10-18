@@ -267,11 +267,11 @@ window.SP_DATA = {
         'Revisa ingredientes y advertencias antes de usar'
       ],
       benefits: [
-        'El dúo cuesta $8 menos que comprar las dos unidades por separado.',
         'No garantiza pérdida de grasa; acompáñalo con alimentación y actividad física.',
         'Cápsulas líquidas, listas para tomar sin mezclar.'
       ],
       usage: 'Sigue las indicaciones y advertencias del envase. Contiene estimulantes; revisa los ingredientes y consulta con un profesional de salud si tienes dudas.',
+      savings: 8,
       featured: true
     }
   ],
@@ -281,6 +281,7 @@ window.SP_DATA = {
       description: 'Mutant Mass Extreme 6 lb + Olympus Creatina 60 servidas', 
       price: 49.00, 
       badge: 'Destacado', 
+      savings: 4,
       image: 'assets/optimized/combos/Combo Volumen.webp'
     },
     { 
@@ -288,6 +289,7 @@ window.SP_DATA = {
       description: 'One of One Creatine 200 servidas + Creakong CX8', 
       price: 46.99, 
       badge: 'Alto valor', 
+      savings: 2,
       image: 'assets/optimized/combos/Combo Creatina Pro.webp'
     },
     { 
@@ -295,6 +297,7 @@ window.SP_DATA = {
       description: 'Mutant Mass Extreme 6 lb + Creakong CX8', 
       price: 50.99, 
       badge: 'Volumen', 
+      savings: 2,
       image: 'assets/optimized/combos/Combo Volumen Plus.webp'
     },
     { 
@@ -302,6 +305,7 @@ window.SP_DATA = {
       description: 'R1 Source7 1.8 lb + Creakong CX8', 
       price: 44.99, 
       badge: 'Equilibrado', 
+      savings: 2,
       image: 'assets/optimized/combos/Combo Proteína y Creatina.webp'
     }
   ]
