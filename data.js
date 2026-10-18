@@ -9,6 +9,11 @@ window.SP_DATA = {
       category: 'Creatinas', 
       image: 'assets/optimized/creatinas/olympus-final.webp',
       status: 'Preventa',
+      description: 'La creatina monohidratada puede apoyar la fuerza y la potencia en ejercicios breves e intensos, como las series de pesas. Su formato en polvo es fácil de integrar a tu rutina.',
+      highlights: [
+        'Apoya fuerza y potencia muscular',
+        '5 g por porción · 60 porciones'
+      ],
       featured: true
     },
     { 
@@ -19,6 +24,11 @@ window.SP_DATA = {
       category: 'Creatinas', 
       image: 'assets/creatinas/nutrex.webp', 
       status: 'Por encargo',
+      description: 'Creatina monohidratada micronizada para complementar entrenamientos de fuerza y apoyar el rendimiento en ejercicios intensos. Su sabor neutro facilita combinarla con otras bebidas.',
+      highlights: [
+        'Apoya fuerza y potencia en ejercicios intensos',
+        '5 g por porción · 60 porciones'
+      ],
       featured: true
     },
     { 
@@ -28,7 +38,15 @@ window.SP_DATA = {
       price: 12.00, 
       category: 'Creatinas', 
       image: 'assets/optimized/creatinas/creakong.webp?v=3',
-      status: 'Por encargo'
+      status: 'Por encargo',
+      description: 'Complejo multi-creatina con aminoácidos, pensado para complementar sesiones exigentes de fuerza y apoyar el rendimiento durante el entrenamiento.',
+      highlights: [
+        'Mezcla de creatinas y aminoácidos',
+        '30 porciones'
+      ],
+      benefits: [
+        'Una alternativa en mezcla para quienes buscan variar de la creatina monohidratada simple.'
+      ],
     },
     { 
       id: 'oneofone', 
@@ -37,7 +55,14 @@ window.SP_DATA = {
       price: 37.00, 
       category: 'Creatinas', 
       image: 'assets/creatinas/oneofone.webp', 
-      status: 'Por encargo'
+      status: 'Por encargo',
+      description: 'Creatina monohidratada para acompañar tu rutina de fuerza y apoyar el rendimiento en ejercicios breves e intensos.',
+      highlights: [
+        '200 porciones por envase'
+      ],
+      benefits: [
+        'Su presentación de 200 porciones es práctica para el uso diario.'
+      ],
     },
     { 
       id: 'r1source7', 
@@ -48,24 +73,24 @@ window.SP_DATA = {
       image: 'assets/optimized/r1-whey-1.8lb/R1SMilkCh.webp',
       status: 'Por encargo',
       highlights: [
-        '22g de proteína por servicio',
-        '7 fuentes de absorción gradual',
-        'Textura suave y cremosa'
+        '22 g de proteína por porción',
+        'Siete fuentes de proteína en una mezcla',
+        'Ayuda a complementar tu ingesta diaria de proteína'
       ],
-      description: 'Fórmula que combina 4 fuentes de suero lácteo, aislado de leche, caseína micelar y proteína vegetal para una recuperación sostenida.',
+      description: 'Mezcla siete fuentes de proteína para ayudarte a completar tu consumo diario y apoyar el mantenimiento y desarrollo muscular junto con el entrenamiento.',
       benefits: [
-        'Estimula la síntesis y reparación muscular prolongada.',
-        'Excelente saciedad: ideal post-entreno o entre comidas.',
-        'Perfil completo de aminoácidos esenciales (EAAs).'
+        'Útil después de entrenar o entre comidas.',
+        'Combina fuentes de proteína de distinta velocidad de digestión.',
+        'Aporta aminoácidos esenciales.'
       ],
       usage: 'Mezclar 1 scoop en 6 a 8 oz de agua fría o leche descremada.',
       flavors: [
-        { name: 'Milk Chocolate', image: 'assets/optimized/r1-whey-1.8lb/R1SMilkCh.webp' },
-        { name: 'Chocolate Peanut Butter', image: 'assets/optimized/r1-whey-1.8lb/R1SChocP.webp' },
-        { name: 'Pistachio', image: 'assets/optimized/r1-whey-1.8lb/R1SPist.webp' },
-        { name: 'Salted Caramel', image: 'assets/optimized/r1-whey-1.8lb/R1SCaramS.webp' },
-        { name: 'Vanilla Creme', image: 'assets/optimized/r1-whey-1.8lb/R1SVain.webp' },
-        { name: 'Cookies & Creme', image: 'assets/optimized/r1-whey-1.8lb/R1SCookiC.webp' }
+        { name: 'Milk Chocolate', image: 'assets/optimized/r1-whey-1.8lb/R1SMilkCh.webp', description: 'Chocolate clásico y cremoso, como una leche chocolatada fría.' },
+        { name: 'Chocolate Peanut Butter', image: 'assets/optimized/r1-whey-1.8lb/R1SChocP.webp', description: 'Combina chocolate suave con el sabor tostado de la mantequilla de maní.' },
+        { name: 'Pistachio', image: 'assets/optimized/r1-whey-1.8lb/R1SPist.webp', description: 'Una alternativa diferente con un perfil dulce de pistacho.' },
+        { name: 'Salted Caramel', image: 'assets/optimized/r1-whey-1.8lb/R1SCaramS.webp', description: 'Caramelo dulce con un toque de sal.' },
+        { name: 'Vanilla Creme', image: 'assets/optimized/r1-whey-1.8lb/R1SVain.webp', description: 'Vainilla suave, fácil de combinar con fruta o en batidos.' },
+        { name: 'Cookies & Creme', image: 'assets/optimized/r1-whey-1.8lb/R1SCookiC.webp', description: 'Sabor dulce inspirado en galletas con crema.' }
       ]
     },
     { 
@@ -77,27 +102,27 @@ window.SP_DATA = {
       image: 'assets/optimized/r1-whey-2lb/R1BanaCr.webp',
       status: 'Por encargo',
       highlights: [
-        '24g de proteína 100% de suero (WPC, WPI, WPH)',
-        '11g de EAAs y más de 5g de BCAAs naturales',
-        'Digestión rápida y textura suave'
+        '24 g de proteína de suero por porción',
+        'Aporta aminoácidos esenciales',
+        'Para complementar tu proteína diaria'
       ],
-      description: 'Fórmula basada exclusivamente en tres fuentes de proteína de suero de leche de rápida absorción. Diseñada para acelerar la recuperación muscular post-entrenamiento.',
+      description: 'Proteína de suero para completar tu ingesta diaria y apoyar la recuperación y el mantenimiento muscular después del entrenamiento.',
       benefits: [
-        'Acelera la reparación de fibras musculares tras entrenamientos intensos.',
-        'Absorción rápida: ideal para el post-entreno o para un aporte proteico rápido durante el día.',
-        'Baja en grasas y azúcares añadidos. Sin rellenos.'
+        'Práctica después de entrenar o cuando necesitas sumar proteína.',
+        'Elaborada con tres fuentes de proteína de suero.',
+        'Aporta aminoácidos esenciales y BCAAs.'
       ],
       usage: 'Mezclar 1 scoop en 6 a 8 oz de agua fría, leche o tu bebida favorita en cualquier momento del día para alcanzar tu meta de proteína.',
       flavors: [
-        { name: 'Banana Creme', image: 'assets/optimized/r1-whey-2lb/R1BanaCr.webp' },
-        { name: 'Café Mocha', image: 'assets/optimized/r1-whey-2lb/R1CafM.webp' },
-        { name: 'Chocolate Fudge', image: 'assets/optimized/r1-whey-2lb/R1ChocoF.webp' },
-        { name: 'Chocolate Peanut Butter', image: 'assets/optimized/r1-whey-2lb/R1ChocoPea.webp' },
-        { name: 'Cookies & Creme', image: 'assets/optimized/r1-whey-2lb/R1CookCr.webp' },
-        { name: 'Fruity Cereal', image: 'assets/optimized/r1-whey-2lb/R1FruitC.webp' },
-        { name: 'Salted Caramel', image: 'assets/optimized/r1-whey-2lb/R1SaltedCar.webp' },
-        { name: 'Strawberries & Creme', image: 'assets/optimized/r1-whey-2lb/R1StrawberCre.webp' },
-        { name: 'Vanilla', image: 'assets/optimized/r1-whey-2lb/R1Vaini.webp' }
+        { name: 'Banana Creme', image: 'assets/optimized/r1-whey-2lb/R1BanaCr.webp', description: 'Batido cremoso con sabor a banano.' },
+        { name: 'Café Mocha', image: 'assets/optimized/r1-whey-2lb/R1CafM.webp', description: 'Mezcla de café tostado y chocolate.' },
+        { name: 'Chocolate Fudge', image: 'assets/optimized/r1-whey-2lb/R1ChocoF.webp', description: 'Sabor intenso a chocolate tipo fudge.' },
+        { name: 'Chocolate Peanut Butter', image: 'assets/optimized/r1-whey-2lb/R1ChocoPea.webp', description: 'Chocolate combinado con mantequilla de maní.' },
+        { name: 'Cookies & Creme', image: 'assets/optimized/r1-whey-2lb/R1CookCr.webp', description: 'Sabor dulce inspirado en galletas con crema.' },
+        { name: 'Fruity Cereal', image: 'assets/optimized/r1-whey-2lb/R1FruitC.webp', description: 'Sabor dulce inspirado en cereal frutal.' },
+        { name: 'Salted Caramel', image: 'assets/optimized/r1-whey-2lb/R1SaltedCar.webp', description: 'Caramelo dulce con un toque de sal.' },
+        { name: 'Strawberries & Creme', image: 'assets/optimized/r1-whey-2lb/R1StrawberCre.webp', description: 'Combinación cremosa de fresa y crema.' },
+        { name: 'Vanilla', image: 'assets/optimized/r1-whey-2lb/R1Vaini.webp', description: 'Vainilla clásica y versátil para combinar.' }
       ]
     },
     { 
@@ -109,23 +134,23 @@ window.SP_DATA = {
       image: 'assets/optimized/mass-gainerR1/R1Mass-ChocoFud.webp',
       status: 'Por encargo',
       highlights: [
-        'Más de 1,220 calorías densas por servicio',
-        '40g de proteína de suero de alta calidad',
-        'Relación 6:1 de carbohidratos a proteína'
+        'Más de 1,220 calorías por porción',
+        '40 g de proteína por porción',
+        'Para complementar una alimentación hipercalórica'
       ],
-      description: 'Fórmula diseñada para atletas y personas con metabolismo acelerado que buscan ganar volumen muscular magro y aumentar su ingesta calórica diaria.',
+      description: 'Aporta calorías, carbohidratos y proteína en un batido para ayudarte a aumentar tu ingesta diaria cuando buscas subir de peso junto con una alimentación y rutina adecuadas.',
       benefits: [
-        'Aporte masivo de energía para entrenamientos pesados.',
-        'Favorece la ganancia de peso y desarrollo muscular rápido.',
-        'Mezcla limpia de carbohidratos complejos sin excesos de azúcar.'
+        'Facilita sumar calorías entre comidas.',
+        'Combina carbohidratos y proteína en una porción.',
+        'Opción práctica para planes de aumento de peso.'
       ],
       usage: 'Mezclar 2 scoops colmados en 16 a 20 oz de agua o leche entera post-entrenamiento o entre comidas principales.',
       flavors: [
-        { name: 'Chocolate Fudge', image: 'assets/optimized/mass-gainerR1/R1Mass-ChocoFud.webp' },
-        { name: 'Chocolate Peanut Butter', image: 'assets/optimized/mass-gainerR1/R1Mass-ChocoPeanButt.webp' },
-        { name: 'Cookies & Creme', image: 'assets/optimized/mass-gainerR1/R1Mass-CookCrea.webp' },
-        { name: 'Strawberries & Cream', image: 'assets/optimized/mass-gainerR1/R1Mass-StrawCre.webp' },
-        { name: 'Vanilla', image: 'assets/mass-gainerR1/R1Mass-Vanilla.webp' }
+        { name: 'Chocolate Fudge', image: 'assets/optimized/mass-gainerR1/R1Mass-ChocoFud.webp', description: 'Sabor intenso a chocolate, una opción clásica para tu batido.' },
+        { name: 'Chocolate Peanut Butter', image: 'assets/optimized/mass-gainerR1/R1Mass-ChocoPeanButt.webp', description: 'Mezcla de chocolate con mantequilla de maní.' },
+        { name: 'Cookies & Creme', image: 'assets/optimized/mass-gainerR1/R1Mass-CookCrea.webp', description: 'Sabor dulce inspirado en galletas con crema.' },
+        { name: 'Strawberries & Cream', image: 'assets/optimized/mass-gainerR1/R1Mass-StrawCre.webp', description: 'Combinación cremosa de fresa y crema.' },
+        { name: 'Vanilla', image: 'assets/mass-gainerR1/R1Mass-Vanilla.webp', description: 'Vainilla suave para combinar con fruta o avena.' }
       ]
     },
     { 
@@ -137,21 +162,21 @@ window.SP_DATA = {
       image: 'assets/optimized/mass-gainermutant6lb/MutantMassTripleChoc.webp',
       status: 'Por encargo',
       highlights: [
-        '1,270 calorías extremas por porción con agua',
-        '46g de proteína pura de suero lácteo',
-        '255g de carbohidratos limpios de absorción dual'
+        '1,270 calorías por porción preparada con agua',
+        '46 g de proteína por porción',
+        'Para complementar una alimentación hipercalórica'
       ],
-      description: 'Fórmula hardcore legendaria diseñada para hardgainers y ectomorfos que luchan por subir de peso y buscan hipertrofia acelerada.',
+      description: 'Batido alto en calorías con carbohidratos y proteína para ayudarte a aumentar tu ingesta diaria y apoyar tu objetivo de subir de peso junto con una alimentación adecuada.',
       benefits: [
-        'Superávit calórico instantáneo sin saturar la digestión.',
-        'Contiene enzimas digestivas añadidas para máxima asimilación.',
-        'Recuperación de glucógeno y síntesis muscular inmediata.'
+        'Práctico para sumar calorías entre comidas.',
+        'Aporta carbohidratos y proteína en una sola preparación.',
+        'Presentación de 6 lb.'
       ],
       usage: 'Mezclar 4 scoops en 16 a 24 oz de agua fría o leche entera. Puede dividirse en 2 scoops por la mañana y 2 scoops post-entreno.',
       flavors: [
-        { name: 'Triple Chocolate', image: 'assets/optimized/mass-gainermutant6lb/MutantMassTripleChoc.webp' },
-        { name: 'Cookies & Cream', image: 'assets/optimized/mass-gainermutant6lb/MutantMassCookCr.webp' },
-        { name: 'Vanilla Ice Cream', image: 'assets/optimized/mass-gainermutant6lb/MutantMassVanill.webp' }
+        { name: 'Triple Chocolate', image: 'assets/optimized/mass-gainermutant6lb/MutantMassTripleChoc.webp', description: 'Sabor intenso a malteada de chocolate.' },
+        { name: 'Cookies & Cream', image: 'assets/optimized/mass-gainermutant6lb/MutantMassCookCr.webp', description: 'Sabor dulce inspirado en galletas con crema.' },
+        { name: 'Vanilla Ice Cream', image: 'assets/optimized/mass-gainermutant6lb/MutantMassVanill.webp', description: 'Vainilla suave, como helado; fácil de combinar.' }
       ],
       featured: true
     },
@@ -164,21 +189,21 @@ window.SP_DATA = {
       image: 'assets/optimized/mass-gainermutant12lb/MutantMassChoco.webp',
       status: 'Por encargo',
       highlights: [
-        'Presentación económica en bolsa reforzada con asas',
-        '46g de proteína y 255g de carbohidratos por toma',
-        'Rendimiento superior para fases prolongadas de volumen'
+        'Aporta carbohidratos y proteína por porción',
+        'Para complementar una alimentación hipercalórica',
+        'Presentación de 12 lb'
       ],
-      description: 'La versión intermedia ideal de Mutant Mass para quienes mantienen una dieta hipercalórica constante y buscan el mejor costo por libra.',
+      description: 'Una presentación grande de Mutant Mass para sumar calorías, carbohidratos y proteína a tu alimentación si tu objetivo es subir de peso.',
       benefits: [
-        'Asegura el plan nutricional de volumen durante semanas completas.',
-        'Mantiene los niveles de energía altos durante entrenamientos de alta intensidad.',
-        'Excelente disolución y perfil de aminoácidos esenciales.'
+        'Ayuda a aumentar la ingesta diaria de calorías.',
+        'Útil como batido entre comidas.',
+        'Presentación de 12 lb.'
       ],
       usage: 'Mezclar 4 scoops en 16 a 24 oz de agua o leche. Tomar después de entrenar o como colación hipercalórica.',
       flavors: [
-        { name: 'Triple Chocolate', image: 'assets/optimized/mass-gainermutant12lb/MutantMassChoco.webp' },
-        { name: 'Cookies & Cream', image: 'assets/optimized/mass-gainermutant12lb/MutantMassCookCre.webp' },
-        { name: 'Vanilla Ice Cream', image: 'assets/optimized/mass-gainermutant12lb/MutantMassVanil.webp' }
+        { name: 'Triple Chocolate', image: 'assets/optimized/mass-gainermutant12lb/MutantMassChoco.webp', description: 'Sabor intenso a malteada de chocolate.' },
+        { name: 'Cookies & Cream', image: 'assets/optimized/mass-gainermutant12lb/MutantMassCookCre.webp', description: 'Sabor dulce inspirado en galletas con crema.' },
+        { name: 'Vanilla Ice Cream', image: 'assets/optimized/mass-gainermutant12lb/MutantMassVanil.webp', description: 'Vainilla suave, como helado; fácil de combinar.' }
       ]
     },
     { 
@@ -190,21 +215,21 @@ window.SP_DATA = {
       image: 'assets/optimized/mass-gainermutant20lb/mutantchoco.webp',
       status: 'Por encargo',
       highlights: [
-        'Saco masivo de 20 lb: máximo valor por inversión',
-        '32 servicios de pura potencia calórica y proteica',
-        'Diseñado para fases pesadas de ganancia de masa bruta'
+        'Aporta carbohidratos y proteína por porción',
+        'Para complementar una alimentación hipercalórica',
+        'Presentación de 20 lb'
       ],
-      description: 'El formato más grande y rentable del mercado. Diseñado para atletas pesados que no pueden permitirse quedarse sin calorías en su preparación.',
+      description: 'El formato de mayor tamaño de Mutant Mass para quienes buscan sumar calorías, carbohidratos y proteína a su alimentación con el objetivo de subir de peso.',
       benefits: [
-        'El menor costo por servicio del mercado en suplementación hardcore.',
-        'Suministro continuo para atletas de alto consumo calórico.',
-        'Resultados medibles en fuerza, peso y tamaño muscular.'
+        'Ayuda a aumentar la ingesta diaria de calorías.',
+        'Útil como batido entre comidas.',
+        'Presentación de 20 lb.'
       ],
       usage: 'Mezclar 4 scoops en 20 oz de agua o leche. Consumir dividido a lo largo del día o post-entreno.',
       flavors: [
-        { name: 'Triple Chocolate', image: 'assets/optimized/mass-gainermutant20lb/mutantchoco.webp' },
-        { name: 'Cookies & Cream', image: 'assets/optimized/mass-gainermutant20lb/mutantcookcream.webp' },
-        { name: 'Vanilla Ice Cream', image: 'assets/optimized/mass-gainermutant20lb/mutantvanilla.webp' }
+        { name: 'Triple Chocolate', image: 'assets/optimized/mass-gainermutant20lb/mutantchoco.webp', description: 'Sabor intenso a malteada de chocolate.' },
+        { name: 'Cookies & Cream', image: 'assets/optimized/mass-gainermutant20lb/mutantcookcream.webp', description: 'Sabor dulce inspirado en galletas con crema.' },
+        { name: 'Vanilla Ice Cream', image: 'assets/optimized/mass-gainermutant20lb/mutantvanilla.webp', description: 'Vainilla suave, como helado; fácil de combinar.' }
       ]
     },
     { 
@@ -214,7 +239,18 @@ window.SP_DATA = {
       price: 22.00, 
       category: 'Otros', 
       image: 'assets/optimized/quemadores/Lipo6-black.webp',
-      status: 'Por encargo'
+      status: 'Por encargo',
+      description: 'Suplemento termogénico con estimulantes, pensado para acompañar una rutina de actividad física. No sustituye una alimentación equilibrada; revisa las advertencias del envase.',
+      highlights: [
+        'Fórmula con estimulantes',
+        'Presentación de 60 cápsulas',
+        'Revisa ingredientes y advertencias antes de usar'
+      ],
+      benefits: [
+        'Se comercializa como apoyo para objetivos de definición junto con alimentación y actividad física; no garantiza pérdida de grasa.',
+        'Formato de cápsulas líquidas, práctico y sin necesidad de preparar batidos.'
+      ],
+      usage: 'Sigue las indicaciones y advertencias del envase. Contiene estimulantes; revisa los ingredientes y consulta con un profesional de salud si tienes dudas.'
     },
     { 
       id: 'lipo6', 
@@ -224,6 +260,18 @@ window.SP_DATA = {
       category: 'Otros', 
       image: 'assets/optimized/quemadores/Duo-Lipo6.webp?v=3',
       status: 'Por encargo',
+      description: 'Dos frascos de Lipo-6 Black Ultra Concentrate con estimulantes. Una presentación conveniente para acompañar tu rutina de actividad física; revisa las advertencias del envase antes de usar.',
+      highlights: [
+        '2 envases · 120 cápsulas en total',
+        'Fórmula con estimulantes',
+        'Revisa ingredientes y advertencias antes de usar'
+      ],
+      benefits: [
+        'El dúo cuesta $8 menos que comprar las dos unidades por separado.',
+        'No garantiza pérdida de grasa; acompáñalo con alimentación y actividad física.',
+        'Cápsulas líquidas, listas para tomar sin mezclar.'
+      ],
+      usage: 'Sigue las indicaciones y advertencias del envase. Contiene estimulantes; revisa los ingredientes y consulta con un profesional de salud si tienes dudas.',
       featured: true
     }
   ],

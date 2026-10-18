@@ -167,6 +167,13 @@ a[href*="wa.me"].btn-secondary:hover {
   margin: 10px 0;
 }
 
+.flavor-note {
+  margin: 4px 0 8px;
+  color: #52525b;
+  font-size: 0.76rem;
+  line-height: 1.35;
+}
+
 .flavor-select-wrap label {
   font-size: 0.8rem;
   font-weight: 700;

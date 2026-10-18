@@ -46,6 +46,7 @@ window.changeFlavor = function(selectEl, productId, productName) {
   const card = selectEl.closest('.product-card');
   const imgEl = card.querySelector('.product-image img');
   const btnEl = card.querySelector('.card-btn');
+  const noteEl = card.querySelector('.flavor-note');
   const selectedOption = selectEl.options[selectEl.selectedIndex];
   
   const newImage = selectEl.value;
@@ -56,6 +57,9 @@ window.changeFlavor = function(selectEl, productId, productName) {
   }
   if (btnEl) {
     btnEl.href = whatsappFor(productName, flavorName);
+  }
+  if (noteEl) {
+    noteEl.textContent = selectedOption.dataset.description || '';
   }
 };
 
@@ -68,7 +72,7 @@ function productCard(p) {
     <div class="flavor-select-wrap">
       <label for="flavor-${p.id}">Sabor:</label>
       <select id="flavor-${p.id}" class="flavor-select" onchange="changeFlavor(this, '${p.id}', '${p.name}')">
-        ${p.flavors.map(f => `<option value="${f.image}">${f.name}</option>`).join('')}
+        ${p.flavors.map(f => `<option value="${f.image}" data-description="${f.description || ''}">${f.name}</option>`).join('')}
       </select>
     </div>
   ` : '';
@@ -81,11 +85,13 @@ function productCard(p) {
   ` : '';
 
   // 3. Desplegable de información y beneficios
-  const detailsHTML = (p.description || p.benefits || p.usage) ? `
+  const detailsHTML = (p.description || p.benefits || p.usage || hasFlavors || p.flavorDescription) ? `
     <details class="product-details">
-      <summary>Ver beneficios y uso</summary>
+      <summary>¿Para qué te sirve?</summary>
       <div class="details-body">
         ${p.description ? `<p class="details-desc">${p.description}</p>` : ''}
+        ${hasFlavors ? `<p class="flavor-note" aria-live="polite">${p.flavors[0].description || ''}</p>` : ''}
+        ${!hasFlavors && p.flavorDescription ? `<p class="flavor-note">${p.flavorDescription}</p>` : ''}
         ${p.benefits && p.benefits.length > 0 ? `
           <ul class="details-benefits">
             ${p.benefits.map(b => `<li>• ${b}</li>`).join('')}
