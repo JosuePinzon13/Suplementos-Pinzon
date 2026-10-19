@@ -146,6 +146,10 @@ const welcomeBotProductSpecs = document.getElementById('welcomeBotProductSpecs')
 const welcomeBotCta = document.getElementById('welcomeBotCta');
 const welcomeBotWhatsapp = document.getElementById('welcomeBotWhatsapp');
 let welcomeBotRecommendation = null;
+let welcomeBotInteracted = false;
+const welcomeBotAutoOpenTimer = window.setTimeout(() => {
+  if (!welcomeBotInteracted) setWelcomeBotOpen(true);
+}, 7000);
 const welcomeBotGuides = {
   Creatinas: {
     feedback: 'Puede apoyar la fuerza y el rendimiento en ejercicios intensos; cada persona responde distinto.',
@@ -206,9 +210,13 @@ function resetWelcomeBot() {
 }
 
 welcomeBotToggle.addEventListener('click', () => {
+  welcomeBotInteracted = true;
+  window.clearTimeout(welcomeBotAutoOpenTimer);
   setWelcomeBotOpen(welcomeBotMessage.hidden);
 });
 document.getElementById('welcomeBotClose').addEventListener('click', () => {
+  welcomeBotInteracted = true;
+  window.clearTimeout(welcomeBotAutoOpenTimer);
   setWelcomeBotOpen(false);
 });
 welcomeBotCta.addEventListener('click', () => {

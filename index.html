@@ -29,7 +29,7 @@
     <span class="cart-count" id="cartCount" aria-live="polite">0</span>
   </button>
   <div class="welcome-bot" id="welcomeBot">
-    <button class="welcome-bot-toggle" id="welcomeBotToggle" type="button" aria-label="Abrir saludo de Pinzón Bot" aria-controls="welcomeBotMessage" aria-expanded="true">
+    <button class="welcome-bot-toggle" id="welcomeBotToggle" type="button" aria-label="Abrir saludo de Pinzón Bot" aria-controls="welcomeBotMessage" aria-expanded="false">
       <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
         <path d="M24 7v6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
         <circle cx="24" cy="5" r="3" fill="#ffd64a"/>
@@ -41,7 +41,7 @@
         <path d="M5 23v8M43 23v8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
       </svg>
     </button>
-    <section class="welcome-bot-message" id="welcomeBotMessage" aria-labelledby="welcomeBotTitle">
+    <section class="welcome-bot-message" id="welcomeBotMessage" aria-labelledby="welcomeBotTitle" hidden>
       <button class="welcome-bot-close" id="welcomeBotClose" type="button" aria-label="Cerrar saludo">×</button>
       <p class="welcome-bot-label">Pinzón Bot · En línea</p>
       <div class="welcome-bot-conversation" id="welcomeBotConversation" aria-live="polite">
@@ -290,6 +290,6 @@
   </footer>
 
   <script src="data.js?v=47"></script>
-  <script src="app.js?v=55"></script>
+  <script src="app.js?v=56"></script>
 </body>
 </html>
