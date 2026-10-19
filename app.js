@@ -136,6 +136,128 @@ cartDialog.addEventListener('click', event => {
   if (event.target === cartDialog) cartDialog.close();
 });
 
+const welcomeBotMessage = document.getElementById('welcomeBotMessage');
+const welcomeBotToggle = document.getElementById('welcomeBotToggle');
+const welcomeBotOptions = document.querySelector('.welcome-bot-options');
+const welcomeBotAnswer = document.getElementById('welcomeBotAnswer');
+const welcomeBotFeedback = document.getElementById('welcomeBotFeedback');
+const welcomeBotProductName = document.getElementById('welcomeBotProductName');
+const welcomeBotProductSpecs = document.getElementById('welcomeBotProductSpecs');
+const welcomeBotCta = document.getElementById('welcomeBotCta');
+const welcomeBotWhatsapp = document.getElementById('welcomeBotWhatsapp');
+let welcomeBotRecommendation = null;
+const welcomeBotGuides = {
+  Creatinas: {
+    feedback: 'Puede apoyar la fuerza y el rendimiento en ejercicios intensos; cada persona responde distinto.',
+    productId: 'nutrex60',
+    productType: 'product',
+    category: 'Creatinas',
+    productName: 'Nutrex Creatine Monohydrate',
+    specs: '60 porciones · $13.75. Olympus Supps también está disponible: 60 porciones · $12.00.',
+    whatsapp: 'Hola, estaba usando el asesor en la web y tengo dudas sobre cómo tomar la Creatina Monohidratada.'
+  },
+  'Ganadores de peso': {
+    feedback: 'Ayuda a sumar calorías y proteína cuando cuesta cubrirlas con comida.',
+    productId: 'r1mass-6lb',
+    productType: 'product',
+    category: 'Ganadores de peso',
+    productName: 'R1 Mass Gainer · 6 lb',
+    specs: 'Más de 1,220 calorías y 40 g de proteína por porción · $42.00 · Por encargo.',
+    whatsapp: 'Hola, vi la recomendación del Mass Gainer en la web y me gustaría asesoría sobre cuál me conviene.'
+  },
+  'Pre-entrenos': {
+    feedback: 'Puro combustible: carga alta de cafeína para enfoque láser y beta-alanina para retrasar el fallo muscular.',
+    productId: 'mutant-madness',
+    productType: 'product',
+    category: 'Pre-entrenos',
+    productName: 'Mutant Madness · 270 g',
+    specs: '30 porciones · Fruit Punch, Blue Raspberry y Lemonade · $26.00 · Bajo pedido.',
+    whatsapp: 'Hola, me interesa encargar el Pre-Entreno Mutant Madness a $26 y tengo un par de consultas.'
+  },
+  Otros: {
+    feedback: 'Contiene estimulantes; no garantiza pérdida de grasa. Revisa la etiqueta antes de usarlo.',
+    productId: 'lipo6-unit',
+    productType: 'product',
+    category: 'Otros',
+    productName: 'Nutrex Lipo-6 Black Ultra Concentrate',
+    specs: '60 cápsulas · $22.00 · Por encargo. También hay Dúo Pack por $36.00.',
+    whatsapp: 'Hola, quiero saber más sobre el quemador Lipo 6 y si me sirve para mi meta actual.'
+  },
+  Combos: {
+    feedback: 'Combina productos con precio especial; revisa qué incluye y cuánto ahorras.',
+    productId: 'combo-volumen',
+    productType: 'combo',
+    category: 'Combos',
+    productName: 'Combo Volumen',
+    specs: 'Mutant Mass Extreme 6 lb + Olympus Creatina 60 porciones · $49.00 · Ahorras $4.00.',
+    whatsapp: 'Hola, vi la sección de combos en la web y quisiera consultar las promociones y opciones de entrega disponibles.'
+  }
+};
+
+function setWelcomeBotOpen(open) {
+  welcomeBotMessage.hidden = !open;
+  welcomeBotToggle.setAttribute('aria-expanded', String(open));
+}
+
+function resetWelcomeBot() {
+  welcomeBotRecommendation = null;
+  welcomeBotOptions.hidden = false;
+  welcomeBotAnswer.hidden = true;
+}
+
+welcomeBotToggle.addEventListener('click', () => {
+  setWelcomeBotOpen(welcomeBotMessage.hidden);
+});
+document.getElementById('welcomeBotClose').addEventListener('click', () => {
+  setWelcomeBotOpen(false);
+});
+welcomeBotCta.addEventListener('click', () => {
+  if (!welcomeBotRecommendation) return;
+
+  const { productId, productType, category } = welcomeBotRecommendation;
+  let card;
+
+  if (productType === 'combo') {
+    card = comboGrid.querySelector(`.combo-card[data-combo-id="${productId}"]`);
+    document.getElementById('combos').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    const filterButton = [...filters.querySelectorAll('.filter-btn')]
+      .find(button => button.dataset.filter === category);
+    if (filterButton && !filterButton.classList.contains('active')) filterButton.click();
+    card = productGrid.querySelector(`.product-card[data-product-id="${productId}"]`);
+    document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  setWelcomeBotOpen(false);
+  if (!card) return;
+  card.classList.add('bot-recommendation-highlight');
+  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  window.setTimeout(() => card.classList.remove('bot-recommendation-highlight'), 2200);
+  card.querySelector('.add-to-cart-btn')?.focus({ preventScroll: true });
+});
+document.getElementById('welcomeBotRestart').addEventListener('click', resetWelcomeBot);
+welcomeBotOptions.addEventListener('click', event => {
+  const option = event.target.closest('[data-bot-category]');
+  if (!option) return;
+
+  const guide = welcomeBotGuides[option.dataset.botCategory];
+  if (!guide) return;
+
+  welcomeBotRecommendation = guide;
+  welcomeBotFeedback.textContent = guide.feedback;
+  welcomeBotProductName.textContent = guide.productName;
+  welcomeBotProductSpecs.textContent = guide.specs;
+  welcomeBotWhatsapp.href = waBase + encodeURIComponent(guide.whatsapp);
+  welcomeBotCta.textContent = guide.productType === 'combo'
+    ? 'Ver combo para agregar al carrito'
+    : 'Ver producto para agregar al carrito';
+  welcomeBotOptions.hidden = true;
+  welcomeBotAnswer.hidden = false;
+  welcomeBotAnswer.classList.remove('is-animated');
+  void welcomeBotAnswer.offsetWidth;
+  welcomeBotAnswer.classList.add('is-animated');
+});
+
 document.addEventListener('click', event => {
   const addButton = event.target.closest('.add-to-cart-btn');
   if (addButton) {
@@ -214,7 +336,7 @@ function productCard(p) {
   ` : '';
 
   return `
-    <article class="product-card${p.featured ? ' is-featured' : ''}" data-category="${p.category}">
+    <article class="product-card${p.featured ? ' is-featured' : ''}" data-category="${p.category}" data-product-id="${p.id}">
       <div class="product-image ${p.id}">
         ${p.featured ? '<span class="product-badge">Destacado</span>' : ''}
         <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.parentElement.innerHTML='<div class=\\'image-fallback\\'>${p.name}</div>'">
@@ -268,7 +390,7 @@ renderProducts();
 
 // Render de combos con soporte para lazy loading y decoding async
 comboGrid.innerHTML = combos.map(c => `
-  <article class="combo-card">
+  <article class="combo-card" data-combo-id="${c.id}">
     ${c.image ? `
       <div class="combo-img-wrap">
         <img src="${c.image}" alt="${c.name}" class="combo-image" loading="lazy" decoding="async" onload="this.classList.add('is-loaded')">

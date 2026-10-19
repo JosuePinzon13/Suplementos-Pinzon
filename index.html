@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0a0a0b" />
   <meta name="description" content="Suplementos Pinzón: creatinas, proteínas, ganadores de peso y suplementos deportivos en Panamá. Productos originales, disponibles y bajo pedido." />
   <title>Suplementos Pinzón | Panamá</title>
-  <link rel="stylesheet" href="styles.css?v=47" />
+  <link rel="stylesheet" href="styles.css?v=55" />
 </head>
 <body>
   <header class="site-header">
@@ -28,6 +28,48 @@
     <span>Ver pedido</span>
     <span class="cart-count" id="cartCount" aria-live="polite">0</span>
   </button>
+  <div class="welcome-bot" id="welcomeBot">
+    <button class="welcome-bot-toggle" id="welcomeBotToggle" type="button" aria-label="Abrir saludo de Pinzón Bot" aria-controls="welcomeBotMessage" aria-expanded="true">
+      <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+        <path d="M24 7v6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="24" cy="5" r="3" fill="#ffd64a"/>
+        <rect x="8" y="14" width="32" height="26" rx="9" fill="currentColor"/>
+        <rect x="13" y="19" width="22" height="14" rx="5" fill="#17171a"/>
+        <circle cx="19" cy="26" r="2" fill="#fff"/>
+        <circle cx="29" cy="26" r="2" fill="#fff"/>
+        <path d="M19 36h10" fill="none" stroke="#ffd64a" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M5 23v8M43 23v8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <section class="welcome-bot-message" id="welcomeBotMessage" aria-labelledby="welcomeBotTitle">
+      <button class="welcome-bot-close" id="welcomeBotClose" type="button" aria-label="Cerrar saludo">×</button>
+      <p class="welcome-bot-label">Pinzón Bot · En línea</p>
+      <div class="welcome-bot-conversation" id="welcomeBotConversation" aria-live="polite">
+        <div id="welcomeBotIntro">
+          <h2 id="welcomeBotTitle">¡Hola! Viniste al lugar indicado 🔥</h2>
+          <p class="welcome-bot-question">¿Cuál es tu objetivo o qué suplemento te llama la atención?</p>
+          <div class="welcome-bot-options" role="group" aria-label="Elige tu objetivo o el suplemento que te interesa">
+            <button type="button" data-bot-category="Creatinas">⚡ Creatina Monohidratada</button>
+            <button type="button" data-bot-category="Ganadores de peso">📈 Ganador de Peso</button>
+            <button type="button" data-bot-category="Pre-entrenos">💥 Pre-Entreno</button>
+            <button type="button" data-bot-category="Otros">🔥 Quemadores de Grasa</button>
+            <button type="button" data-bot-category="Combos">📦 Combos / Promos</button>
+          </div>
+        </div>
+        <div class="welcome-bot-answer" id="welcomeBotAnswer" hidden>
+          <p class="welcome-bot-feedback" id="welcomeBotFeedback"></p>
+          <div class="welcome-bot-recommendation">
+            <span>RECOMENDACIÓN</span>
+            <h3 id="welcomeBotProductName"></h3>
+            <p id="welcomeBotProductSpecs"></p>
+          </div>
+          <button class="welcome-bot-cta" id="welcomeBotCta" type="button">Ver producto en catálogo</button>
+          <a class="welcome-bot-secondary" id="welcomeBotWhatsapp" href="#" target="_blank" rel="noopener noreferrer">💬 Consultar asesoría por WhatsApp</a>
+          <button class="welcome-bot-restart" id="welcomeBotRestart" type="button">← Elegir otra opción</button>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <main>
     <section class="hero" id="inicio">
@@ -178,6 +220,17 @@
               <p class="client-caption">Atención directa y entrega coordinada sin complicaciones.</p>
             </div>
           </article>
+
+          <article class="client-card">
+            <div class="client-card-img client-card-img--landscape">
+              <img src="assets/optimized/clientes/cliente-r1-mass-gainer.webp" alt="Cliente mostrando dos envases de R1 Mass Gainer" loading="lazy" decoding="async" />
+            </div>
+            <div class="client-card-content">
+              <span class="client-verified">✓ Cliente</span>
+              <p class="client-name">Gracias por tu confianza</p>
+              <p class="client-caption">Dos R1 Mass Gainer para acompañar su entrenamiento.</p>
+            </div>
+          </article>
         </div>
 
         <button class="carousel-nav-btn next" id="nextClientBtn" aria-label="Siguiente">›</button>
@@ -237,6 +290,6 @@
   </footer>
 
   <script src="data.js?v=47"></script>
-  <script src="app.js?v=49"></script>
+  <script src="app.js?v=55"></script>
 </body>
 </html>
