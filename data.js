@@ -232,6 +232,31 @@ window.SP_DATA = {
         { name: 'Vanilla Ice Cream', image: 'assets/optimized/mass-gainermutant20lb/mutantvanilla.webp', description: 'Vainilla suave, como helado; fácil de combinar.' }
       ]
     },
+    {
+      id: 'mutant-madness',
+      name: 'Mutant Madness Ultra-Concentrated Pre-Workout',
+      presentation: '270 g · 30 porciones',
+      price: 26.00,
+      category: 'Pre-entrenos',
+      image: 'assets/pre-entrenos/mutant-madness-fruit-punch.webp',
+      status: 'Por encargo',
+      description: 'Pre-entreno ultra concentrado Mutant Madness con cafeína, pensado para acompañar tu preparación antes de entrenar. Presentación de 270 g y 30 porciones; revisa los ingredientes y advertencias del envase.',
+      highlights: [
+        'Pre-entreno ultra concentrado',
+        '270 g · 30 porciones',
+        'Contiene cafeína'
+      ],
+      benefits: [
+        'Fórmula para complementar tu rutina antes del entrenamiento.',
+        'Contiene cafeína; revisa la etiqueta y considera tu consumo total de estimulantes.'
+      ],
+      usage: 'Sigue las indicaciones y advertencias del envase. Evita combinarlo con otras fuentes de cafeína sin revisar primero la etiqueta.',
+      flavors: [
+        { name: 'Fruit Punch', image: 'assets/pre-entrenos/mutant-madness-fruit-punch.webp' },
+        { name: 'Blue Raspberry', image: 'assets/pre-entrenos/mutant-madness-blue-raspberry.webp' },
+        { name: 'Lemonade', image: 'assets/pre-entrenos/mutant-madness-lemonade.webp' }
+      ]
+    },
     { 
       id: 'lipo6-unit', 
       name: 'Nutrex Lipo-6 Black Ultra Concentrate', 

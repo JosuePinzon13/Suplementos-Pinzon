@@ -59,7 +59,7 @@ function addToCart(type, id, card) {
       key,
       name: itemData.name,
       presentation: itemData.presentation || '',
-      price: itemData.price,
+      price: itemData.price == null ? null : itemData.price,
       flavor: selectedFlavor,
       quantity: 1
     });
@@ -78,7 +78,8 @@ function addToCart(type, id, card) {
 
 function renderCart(animate = false) {
   const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const hasUnpricedItems = cart.some(item => item.price == null);
+  const total = cart.reduce((sum, item) => sum + (item.price == null ? 0 : item.price * item.quantity), 0);
   cartCount.textContent = String(itemCount);
   if (animate) {
     cartOpenBtn.classList.remove('is-updated');
@@ -86,7 +87,7 @@ function renderCart(animate = false) {
     cartOpenBtn.classList.add('is-updated');
   }
   cartOpenBtn.setAttribute('aria-label', `Ver pedido, ${itemCount} ${itemCount === 1 ? 'producto' : 'productos'}`);
-  cartTotal.textContent = money(total);
+  cartTotal.textContent = hasUnpricedItems ? 'Por confirmar' : money(total);
   cartCheckout.setAttribute('aria-disabled', String(cart.length === 0));
   cartCheckout.tabIndex = cart.length === 0 ? -1 : 0;
 
@@ -101,7 +102,7 @@ function renderCart(animate = false) {
       <div class="cart-item-info">
         <h3>${item.name}</h3>
         <p>${[item.presentation, item.flavor].filter(Boolean).join(' · ')}</p>
-        <strong>${money(item.price)} c/u</strong>
+        <strong>${item.price == null ? 'Precio por confirmar' : `${money(item.price)} c/u`}</strong>
       </div>
       <div class="cart-item-controls" aria-label="Cantidad de ${item.name}">
         <button type="button" data-cart-action="decrease" data-key="${item.key}" aria-label="Disminuir cantidad" ${item.quantity === 1 ? 'disabled' : ''}>−</button>
@@ -109,20 +110,21 @@ function renderCart(animate = false) {
         <button type="button" data-cart-action="increase" data-key="${item.key}" aria-label="Aumentar cantidad">+</button>
         <button type="button" class="cart-remove" data-cart-action="remove" data-key="${item.key}" aria-label="Quitar ${item.name} del pedido">Quitar</button>
       </div>
-      <strong class="cart-item-subtotal">${money(item.price * item.quantity)}</strong>
+      <strong class="cart-item-subtotal">${item.price == null ? 'Consultar precio' : money(item.price * item.quantity)}</strong>
     </article>
   `).join('');
 
   const orderLines = cart.map(item => {
     const details = [item.presentation, item.flavor].filter(Boolean).join(' · ');
-    return `• ${item.name}${details ? ` (${details})` : ''} × ${item.quantity} — ${money(item.price * item.quantity)}`;
+    const lineTotal = item.price == null ? 'precio por confirmar' : money(item.price * item.quantity);
+    return `• ${item.name}${details ? ` (${details})` : ''} × ${item.quantity} — ${lineTotal}`;
   });
   const message = [
     'Hola, quiero hacer este pedido en Suplementos Pinzón:',
     '',
     ...orderLines,
     '',
-    `Total estimado: ${money(total)}`,
+    `Total: ${hasUnpricedItems ? (total > 0 ? `${money(total)} en productos con precio publicado; total final por confirmar` : 'por confirmar') : money(total)}`,
     'Quedo pendiente de confirmar disponibilidad y coordinar la entrega.'
   ].join('\n');
   cartCheckout.href = waBase + encodeURIComponent(message);
@@ -162,9 +164,11 @@ window.changeFlavor = function(selectEl) {
   const selectedOption = selectEl.options[selectEl.selectedIndex];
   
   const newImage = selectEl.value;
+  const flavorName = selectedOption.textContent.trim();
 
   if (imgEl && newImage) {
     imgEl.src = newImage;
+    imgEl.alt = `${card.querySelector('h3').textContent.trim()} - ${flavorName}`;
   }
   if (noteEl) {
     noteEl.textContent = selectedOption.dataset.description || '';
@@ -250,7 +254,7 @@ function renderProducts(category = 'Todos') {
   observeReveals(productGrid);
 }
 
-const categories = ['Todos', 'Creatinas', 'Proteínas', 'Ganadores de peso', 'Otros'];
+const categories = ['Todos', 'Creatinas', 'Proteínas', 'Ganadores de peso', 'Pre-entrenos', 'Otros'];
 filters.innerHTML = categories.map((c, i) => `<button class="filter-btn ${i===0?'active':''}" data-filter="${c}">${c}</button>`).join('');
 
 filters.addEventListener('click', e => {
