@@ -193,7 +193,7 @@ const welcomeBotGuides = {
     productType: 'combo',
     category: 'Combos',
     productName: 'Combo Volumen',
-    specs: 'Mutant Mass Extreme 6 lb + Olympus Creatina 60 porciones · $49.00 · Ahorras $4.00.',
+    specs: 'Mutant Mass Extreme 6 lb + Olympus Creatina 60 porciones · $41.00 · Ahorras $4.00.',
     whatsapp: 'Hola, vi la sección de combos en la web y quisiera consultar las promociones y opciones de entrega disponibles.'
   }
 };
