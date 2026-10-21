@@ -125,6 +125,28 @@ window.SP_DATA = {
         { name: 'Vanilla', image: 'assets/optimized/r1-whey-2lb/R1Vaini.webp', description: 'Vainilla clásica y versátil para combinar.' }
       ]
     },
+    {
+      id: 'nutrex-whey-2lb-vanilla',
+      name: 'Nutrex 100% Whey Protein',
+      presentation: '2 lb · Vainilla',
+      price: 40.00,
+      category: 'Proteínas',
+      image: 'assets/optimized/proteinas/nutrex-100-whey-vainilla.webp',
+      status: 'Por encargo',
+      highlights: [
+        '24 g de proteína y 5 g de BCAAs por porción',
+        '140 calorías por porción',
+        '2 lb · Sabor vainilla'
+      ],
+      description: 'Proteína de suero para complementar tu ingesta diaria y apoyar la recuperación después del entrenamiento y el desarrollo muscular junto con una rutina adecuada.',
+      benefits: [
+        'Aporta 24 g de proteína y 5 g de BCAAs por porción.',
+        'Aporta 140 calorías por porción.',
+        'Digestión ligera y mezcla sin grumos.',
+        'Sabor vainilla, fácil de combinar en agua o licuados.'
+      ],
+      usage: 'Mezclar 1 scoop en agua o leche después de entrenar o entre comidas.'
+    },
     { 
       id: 'r1mass-6lb', 
       name: 'R1 Mass Gainer', 
