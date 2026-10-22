@@ -48,6 +48,7 @@ window.SP_DATA = {
       benefits: [
         'Una alternativa en mezcla para quienes buscan variar de la creatina monohidratada simple.'
       ],
+      featured: true
     },
     { 
       id: 'oneofone', 
