@@ -99,7 +99,11 @@ dialog[open] .cart-panel{animation:cart-slide-in .32s cubic-bezier(.2,.75,.25,1)
 .event-card{display:grid;grid-template-columns:110px 1fr;gap:28px;border:1px solid #dddde1;background:#fff;border-radius:18px;padding:30px}.event-date{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0f0f12;color:#fff;border-radius:14px;min-height:120px;font-style:normal}.event-date strong{font-size:44px;line-height:1}.event-date span{font-size:12px;letter-spacing:.18em;color:#ff444b;margin-top:7px;font-weight:900}.event-date small{font-size:11px;color:#bcbcc2;margin-top:3px;font-weight:700}.event-card h3{font-size:28px;margin:12px 0}.event-card p{color:#66666f;line-height:1.65;margin:0;max-width:800px}.section-split{display:grid;grid-template-columns:1fr 1fr;gap:70px;background:#ececea}.about-copy p{font-size:18px;line-height:1.7;color:#56565e;margin-top:0}.clients-section{background:#fff}.client-placeholder{border:1px solid #e2e2e5;border-radius:18px;padding:30px;display:flex;align-items:center;gap:24px;background:#fafafa}.client-mark{width:76px;height:76px;flex:0 0 76px;background:#101014;color:#fff;border-radius:50%;display:grid;place-items:center;font-size:24px;font-weight:900;border:3px solid var(--red)}.client-placeholder h3{margin:0 0 8px;font-size:24px}.client-placeholder p{margin:0;color:#686870}
 .contact-section{background:linear-gradient(115deg,#0b0b0e,#17171c);color:#fff;padding:76px max(24px,calc((100vw - var(--max))/2));display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}.contact-section p{color:#b7b7bd;line-height:1.55}.contact-actions{display:grid;gap:12px}
 .contact-section .payment-methods{margin-top:14px;color:#fff}
-.payment-methods strong{color:#fff}.contact-actions{display:grid;gap:12px}
+.payment-methods strong{color:#fff}
+.payment-method-list{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}
+.payment-method{display:flex;align-items:center;gap:9px;min-width:150px;padding:9px 12px;border:1px solid #34343b;border-radius:12px;background:#111114;color:#fff;font-size:13px;font-weight:800}
+.payment-method img{width:42px;height:36px;object-fit:contain;border-radius:6px;background:#fff}
+.contact-actions{display:grid;gap:12px}
 
 /* BOTONES DE CONTACTO FINAL: WHATSAPP E INSTAGRAM */
 .btn-whatsapp{background:#25d366;color:#fff;font-weight:900;transition:background .2s,transform .2s}
@@ -448,14 +452,20 @@ a[href*="wa.me"].btn-secondary:hover {
 
 .price-row {
   align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .price-row small {
-  max-width: 145px;
+  width: max-content;
+  max-width: none;
+  flex: 0 0 auto;
   border-radius: 999px;
   padding: 6px 8px;
   background: #f1f1f3;
   line-height: 1.25;
+  white-space: nowrap;
 }
 
 .price-row .savings-badge {
