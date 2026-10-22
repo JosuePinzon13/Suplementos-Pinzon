@@ -831,8 +831,14 @@ summary:focus-visible {
   }
 
   .product-offer {
+    align-items: stretch;
+    flex-direction: column;
     gap: 6px;
     padding: 10px;
+  }
+
+  .product-offer-main {
+    width: 100%;
   }
 
   .product-offer-kicker {
@@ -849,9 +855,19 @@ summary:focus-visible {
   }
 
   .product-offer-saving {
-    max-width: 68px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px;
+    max-width: none;
     padding: 7px 6px;
     font-size: 10px;
+    text-align: left;
+  }
+
+  .product-offer-saving span {
+    margin-top: 0;
+    text-align: right;
   }
 
   .offer-image-badge {
