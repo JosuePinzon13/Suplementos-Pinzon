@@ -42,10 +42,32 @@ function productStatusClass(status = '') {
   return 'product-status--neutral';
 }
 
-function addToCart(type, id, card) {
+function cartItemTotal(item) {
+  if (item.price == null) return 0;
+  if (!item.offer || item.offer.quantity < 1) return item.price * item.quantity;
+
+  const offerBundles = Math.floor(item.quantity / item.offer.quantity);
+  const remainingQuantity = item.quantity % item.offer.quantity;
+  return offerBundles * item.offer.price + remainingQuantity * item.price;
+}
+
+function cartItemPriceBreakdown(item) {
+  if (!item.offer || item.offer.quantity < 1 || item.quantity < item.offer.quantity) {
+    return `${item.quantity} × ${money(item.price)} = ${money(cartItemTotal(item))}`;
+  }
+
+  const offerBundles = Math.floor(item.quantity / item.offer.quantity);
+  const remainingQuantity = item.quantity % item.offer.quantity;
+  const parts = [`${offerBundles} × oferta (${item.offer.quantity} × ${money(item.offer.price)})`];
+  if (remainingQuantity) parts.push(`${remainingQuantity} × ${money(item.price)}`);
+  return `${parts.join(' + ')} = ${money(cartItemTotal(item))}`;
+}
+
+function addToCart(type, id, card, addButton) {
   const itemData = (type === 'product' ? products : combos).find(item => item.id === id);
   if (!itemData) return;
 
+  const addQuantity = Number(addButton?.dataset.addQuantity) || 1;
   const selectedFlavor = type === 'product'
     ? card.querySelector('.flavor-select')?.selectedOptions[0]?.textContent.trim() || ''
     : '';
@@ -53,23 +75,23 @@ function addToCart(type, id, card) {
   const existingItem = cart.find(item => item.key === key);
 
   if (existingItem) {
-    existingItem.quantity += 1;
+    existingItem.quantity += addQuantity;
   } else {
     cart.push({
       key,
       name: itemData.name,
       presentation: itemData.presentation || '',
       price: itemData.price == null ? null : itemData.price,
+      offer: itemData.offer || null,
       flavor: selectedFlavor,
-      quantity: 1
+      quantity: addQuantity
     });
   }
 
   renderCart(true);
-  const addButton = card.querySelector('.add-to-cart-btn');
   if (addButton) {
     const originalText = addButton.textContent;
-    addButton.textContent = '¡Agregado!';
+    addButton.textContent = addQuantity > 1 ? '¡Dúo agregado!' : '¡Agregado!';
     window.setTimeout(() => {
       if (addButton.isConnected) addButton.textContent = originalText;
     }, 1200);
@@ -79,7 +101,7 @@ function addToCart(type, id, card) {
 function renderCart(animate = false) {
   const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const hasUnpricedItems = cart.some(item => item.price == null);
-  const total = cart.reduce((sum, item) => sum + (item.price == null ? 0 : item.price * item.quantity), 0);
+  const total = cart.reduce((sum, item) => sum + cartItemTotal(item), 0);
   cartCount.textContent = String(itemCount);
   if (animate) {
     cartOpenBtn.classList.remove('is-updated');
@@ -102,7 +124,9 @@ function renderCart(animate = false) {
       <div class="cart-item-info">
         <h3>${item.name}</h3>
         <p>${[item.presentation, item.flavor].filter(Boolean).join(' · ')}</p>
-        <strong>${item.price == null ? 'Precio por confirmar' : `${money(item.price)} c/u`}</strong>
+        <strong>${item.price == null ? 'Precio por confirmar' : item.offer
+          ? `${money(item.price)} c/u · Oferta ${item.offer.quantity} × ${money(item.offer.price)}`
+          : `${money(item.price)} c/u`}</strong>
       </div>
       <div class="cart-item-controls" aria-label="Cantidad de ${item.name}">
         <button type="button" data-cart-action="decrease" data-key="${item.key}" aria-label="Disminuir cantidad" ${item.quantity === 1 ? 'disabled' : ''}>−</button>
@@ -110,13 +134,13 @@ function renderCart(animate = false) {
         <button type="button" data-cart-action="increase" data-key="${item.key}" aria-label="Aumentar cantidad">+</button>
         <button type="button" class="cart-remove" data-cart-action="remove" data-key="${item.key}" aria-label="Quitar ${item.name} del pedido">Quitar</button>
       </div>
-      <strong class="cart-item-subtotal">${item.price == null ? 'Consultar precio' : money(item.price * item.quantity)}</strong>
+      <strong class="cart-item-subtotal">${item.price == null ? 'Consultar precio' : money(cartItemTotal(item))}</strong>
     </article>
   `).join('');
 
   const orderLines = cart.map(item => {
     const details = [item.presentation, item.flavor].filter(Boolean).join(' · ');
-    const lineTotal = item.price == null ? 'precio por confirmar' : money(item.price * item.quantity);
+    const lineTotal = item.price == null ? 'precio por confirmar' : cartItemPriceBreakdown(item);
     return `• ${item.name}${details ? ` (${details})` : ''} × ${item.quantity} — ${lineTotal}`;
   });
   const message = [
@@ -183,7 +207,7 @@ const welcomeBotGuides = {
     productId: 'lipo6-unit',
     productType: 'product',
     category: 'Otros',
-    productName: 'Nutrex Lipo-6 Black Ultra Concentrate',
+    productName: 'Nutrex Lipo-6 Black Ultra Concentrado',
     specs: '60 cápsulas · $22.00 · Por encargo. También hay Dúo Pack por $36.00.',
     whatsapp: 'Hola, quiero saber más sobre el quemador Lipo 6 y si me sirve para mi meta actual.'
   },
@@ -269,7 +293,7 @@ welcomeBotOptions.addEventListener('click', event => {
 document.addEventListener('click', event => {
   const addButton = event.target.closest('.add-to-cart-btn');
   if (addButton) {
-    addToCart(addButton.dataset.cartType, addButton.dataset.cartId, addButton.closest('.product-card, .combo-card'));
+    addToCart(addButton.dataset.cartType, addButton.dataset.cartId, addButton.closest('.product-card, .combo-card'), addButton);
     return;
   }
 
@@ -290,7 +314,6 @@ renderCart();
 window.changeFlavor = function(selectEl) {
   const card = selectEl.closest('.product-card');
   const imgEl = card.querySelector('.product-image img');
-  const noteEl = card.querySelector('.flavor-note');
   const selectedOption = selectEl.options[selectEl.selectedIndex];
   
   const newImage = selectEl.value;
@@ -300,10 +323,32 @@ window.changeFlavor = function(selectEl) {
     imgEl.src = newImage;
     imgEl.alt = `${card.querySelector('h3').textContent.trim()} - ${flavorName}`;
   }
-  if (noteEl) {
-    noteEl.textContent = selectedOption.dataset.description || '';
+  const product = products.find(item => item.id === card.dataset.productId);
+  const flavor = product?.flavors?.[selectEl.selectedIndex];
+  card.querySelector('.product-image').classList.toggle('has-light-image-background', Boolean(flavor?.lightBackground));
+  const highlightsEl = card.querySelector('.product-highlights');
+  if (product?.flavors && highlightsEl) {
+    highlightsEl.replaceChildren(...getFlavorHighlights(product, selectEl.selectedIndex).map(highlight => {
+      const item = document.createElement('li');
+      item.textContent = `✓ ${highlight}`;
+      return item;
+    }));
+  }
+  const flavorNoteEl = card.querySelector('.flavor-note');
+  if (flavorNoteEl) {
+    flavorNoteEl.textContent = flavor?.description || selectedOption.dataset.description || '';
+  }
+  const usageEl = card.querySelector('.details-usage');
+  if (usageEl && flavor?.usage) {
+    usageEl.lastChild.textContent = ` ${flavor.usage}`;
   }
 };
+
+function getFlavorHighlights(product, flavorIndex = 0) {
+  const flavor = product.flavors[flavorIndex];
+  if (flavor.highlights) return flavor.highlights;
+  return [...(product.highlights || []).slice(0, 2), `Sabor: ${flavor.name}`];
+}
 
 function productCard(p) {
   // 1. Selector de sabores (si existen)
@@ -319,9 +364,12 @@ function productCard(p) {
   ` : '';
 
   // 2. Viñetas rápidas (highlights)
-  const highlightsHTML = p.highlights && p.highlights.length > 0 ? `
+  const highlights = hasFlavors
+    ? getFlavorHighlights(p)
+    : p.highlights;
+  const highlightsHTML = highlights && highlights.length > 0 ? `
     <ul class="product-highlights">
-      ${p.highlights.map(h => `<li>✓ ${h}</li>`).join('')}
+      ${highlights.map(h => `<li>✓ ${h}</li>`).join('')}
     </ul>
   ` : '';
 
@@ -347,12 +395,28 @@ function productCard(p) {
     <article class="product-card${p.featured ? ' is-featured' : ''}" data-category="${p.category}" data-product-id="${p.id}">
       <div class="product-image ${p.id}">
         ${p.featured ? '<span class="product-badge">Destacado</span>' : ''}
+        ${p.offer ? `<span class="offer-image-badge">${p.offer.quantity} POR ${money(p.offer.price)}</span>` : ''}
         <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.parentElement.innerHTML='<div class=\\'image-fallback\\'>${p.name}</div>'">
       </div>
       <div class="product-info">
         <div class="product-meta"><span>${p.category}</span><span>${p.presentation}</span></div>
         <h3>${p.name}</h3>
-        
+        ${p.offer ? `
+          <div class="product-offer">
+            <div class="product-offer-main">
+              <span class="product-offer-kicker">Precio especial en dúo</span>
+              <div class="product-offer-price">
+                <strong>${p.offer.quantity} × ${money(p.offer.price)}</strong>
+                <del>Antes ${money(p.price * p.offer.quantity)}</del>
+              </div>
+              <span class="product-offer-unit">Solo ${money(p.offer.price / p.offer.quantity)} cada una</span>
+            </div>
+            <span class="product-offer-saving">
+              <strong>${Math.round(((p.price * p.offer.quantity - p.offer.price) / (p.price * p.offer.quantity)) * 100)}% menos</strong>
+              <span>${money(p.price * p.offer.quantity - p.offer.price)} de ahorro</span>
+            </span>
+          </div>
+        ` : ''}
         ${highlightsHTML}
         ${flavorsHTML}
         ${detailsHTML}
@@ -363,9 +427,15 @@ function productCard(p) {
             ${p.originalPrice != null ? `<del class="original-price">${money(p.originalPrice)}</del>` : ''}
           </span>
           ${p.savings ? `<span class="savings-badge">Ahorras ${money(p.savings)}</span>` : ''}
+          ${p.offer ? '<span class="unit-price-note">Precio por unidad</span>' : ''}
           <small class="product-status ${productStatusClass(p.status)}">${p.status}</small>
         </div>
-        <button class="card-btn add-to-cart-btn" type="button" data-cart-type="product" data-cart-id="${p.id}">Agregar al carrito</button>
+        ${p.offer ? `
+          <div class="offer-actions">
+            <button class="card-btn add-to-cart-btn offer-cta" type="button" data-cart-type="product" data-cart-id="${p.id}" data-add-quantity="${p.offer.quantity}">Agregar dúo · ${money(p.offer.price)}</button>
+            <button class="card-btn add-to-cart-btn offer-single-cta" type="button" data-cart-type="product" data-cart-id="${p.id}">Agregar 1 · ${money(p.price)}</button>
+          </div>
+        ` : `<button class="card-btn add-to-cart-btn" type="button" data-cart-type="product" data-cart-id="${p.id}">Agregar al carrito</button>`}
       </div>
     </article>`;
 }

@@ -18,7 +18,7 @@ window.SP_DATA = {
     },
     { 
       id: 'nutrex60', 
-      name: 'Nutrex Creatine Monohydrate', 
+      name: 'Nutrex Creatina Monohidratada',
       presentation: '60 servidas', 
       price: 13.75, 
       category: 'Creatinas', 
@@ -35,7 +35,8 @@ window.SP_DATA = {
       id: 'creakong', 
       name: 'Creakong CX8', 
       presentation: '30 servidas', 
-      price: 12.00, 
+      price: 12.00,
+      offer: { quantity: 2, price: 19.00 },
       category: 'Creatinas', 
       image: 'assets/optimized/creatinas/creakong.webp?v=3',
       status: 'Por encargo',
@@ -50,7 +51,7 @@ window.SP_DATA = {
     },
     { 
       id: 'oneofone', 
-      name: 'One of One Creatine Monohydrate', 
+      name: 'One of One Creatina Monohidratada',
       presentation: '200 servidas', 
       price: 28.00,
       category: 'Creatinas', 
@@ -128,24 +129,57 @@ window.SP_DATA = {
     {
       id: 'nutrex-whey-2lb-vanilla',
       name: 'Nutrex 100% Whey Protein',
-      presentation: '2 lb · Vainilla',
+      presentation: '2 lb',
       price: 40.00,
       category: 'Proteínas',
       image: 'assets/optimized/proteinas/nutrex-100-whey-vainilla.webp',
       status: 'Por encargo',
       highlights: [
-        '24 g de proteína y 5 g de BCAAs por porción',
-        '140 calorías por porción',
-        '2 lb · Sabor vainilla'
+        '24 g de proteína por porción',
+        '2 lb · Disponible en tres sabores'
       ],
       description: 'Proteína de suero para complementar tu ingesta diaria y apoyar la recuperación después del entrenamiento y el desarrollo muscular junto con una rutina adecuada.',
       benefits: [
-        'Aporta 24 g de proteína y 5 g de BCAAs por porción.',
-        'Aporta 140 calorías por porción.',
         'Digestión ligera y mezcla sin grumos.',
-        'Sabor vainilla, fácil de combinar en agua o licuados.'
+        'Proteína de suero para complementar tu ingesta diaria.'
       ],
-      usage: 'Mezclar 1 scoop en agua o leche después de entrenar o entre comidas.'
+      usage: 'Mezclar 1 scoop en agua o leche después de entrenar o entre comidas.',
+      flavors: [
+        {
+          name: 'Vainilla',
+          image: 'assets/optimized/proteinas/nutrex-100-whey-vainilla.webp',
+          description: '24 g de proteína, 5 g de BCAAs y 140 calorías por porción. Sabor vainilla, versátil para mezclar con agua o en licuados.',
+          usage: 'Mezclar 1 scoop en agua o leche después de entrenar o entre comidas.',
+          highlights: [
+            '24 g de proteína y 5 g de BCAAs por porción',
+            '140 calorías por porción',
+            '2 lb · Sabor vainilla'
+          ]
+        },
+        {
+          name: 'Chocolate',
+          image: 'assets/optimized/proteinas/nutrex-100-whey-chocolate.webp',
+          description: '24 g de proteína, más de 5 g de BCAAs y 130 calorías por porción. Sabor a chocolate intenso y cremoso. Mezcla 1 scoop en agua fría o leche descremada después de entrenar o entre comidas.',
+          usage: 'Mezclar 1 scoop en agua fría o leche descremada después de entrenar o entre comidas.',
+          highlights: [
+            '24 g de proteína y más de 5 g de BCAAs por porción',
+            '130 calorías por porción',
+            '2 lb · Sabor chocolate'
+          ]
+        },
+        {
+          name: 'Cookies & Cream',
+          image: 'assets/optimized/proteinas/nutrex-100-whey-cookies-cream.webp',
+          lightBackground: true,
+          description: '24 g de proteína, 5 g de BCAAs y 2–3 g de carbohidratos por porción. Sabor galleta con crema, para licuados, recetas o avena. Mezcla 1 scoop en agua fría, leche o licuado después de entrenar.',
+          usage: 'Mezclar 1 scoop en agua fría, leche o licuado después de entrenar.',
+          highlights: [
+            '24 g de proteína y 5 g de BCAAs por porción',
+            '2–3 g de carbohidratos por porción',
+            '2 lb · Sabor Cookies & Cream'
+          ]
+        }
+      ]
     },
     { 
       id: 'r1mass-6lb', 
@@ -170,7 +204,7 @@ window.SP_DATA = {
       flavors: [
         { name: 'Chocolate Fudge', image: 'assets/optimized/mass-gainerR1/R1Mass-ChocoFud.webp', description: 'Sabor intenso a chocolate, una opción clásica para tu batido.' },
         { name: 'Chocolate Peanut Butter', image: 'assets/optimized/mass-gainerR1/R1Mass-ChocoPeanButt.webp', description: 'Mezcla de chocolate con mantequilla de maní.' },
-        { name: 'Cookies & Creme', image: 'assets/optimized/mass-gainerR1/R1Mass-CookCrea.webp', description: 'Sabor dulce inspirado en galletas con crema.' },
+        { name: 'Cookies & Cream', image: 'assets/optimized/mass-gainerR1/R1Mass-CookCrea.webp', description: 'Sabor dulce inspirado en galletas con crema.' },
         { name: 'Strawberries & Cream', image: 'assets/optimized/mass-gainerR1/R1Mass-StrawCre.webp', description: 'Combinación cremosa de fresa y crema.' },
         { name: 'Vanilla', image: 'assets/mass-gainerR1/R1Mass-Vanilla.webp', description: 'Vainilla suave para combinar con fruta o avena.' }
       ]
@@ -256,7 +290,7 @@ window.SP_DATA = {
     },
     {
       id: 'mutant-madness',
-      name: 'Mutant Madness Ultra-Concentrated Pre-Workout',
+      name: 'Mutant Madness',
       presentation: '270 g · 30 porciones',
       price: 26.00,
       category: 'Pre-entrenos',
@@ -281,7 +315,7 @@ window.SP_DATA = {
     },
     { 
       id: 'lipo6-unit', 
-      name: 'Nutrex Lipo-6 Black Ultra Concentrate', 
+      name: 'Nutrex Lipo-6 Black Ultra Concentrado',
       presentation: '60 cápsulas (1 unidad)', 
       price: 22.00, 
       category: 'Otros', 
@@ -301,7 +335,7 @@ window.SP_DATA = {
     },
     { 
       id: 'lipo6', 
-      name: 'Nutrex Lipo-6 Black Ultra Concentrate', 
+      name: 'Nutrex Lipo-6 Black Ultra Concentrado',
       presentation: '2 unidades (Dúo Pack)', 
       price: 36.00, 
       category: 'Otros', 
