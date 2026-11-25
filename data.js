@@ -22,6 +22,7 @@ window.SP_DATA = {
       presentation: '60 servidas', 
       price: 10.00,
       originalPrice: 13.75,
+      offer: { quantity: 2, price: 19.00 },
       category: 'Creatinas', 
       image: 'assets/creatinas/nutrex.webp', 
       status: 'Preventa',
@@ -50,6 +51,66 @@ window.SP_DATA = {
         'Una alternativa en mezcla para quienes buscan variar de la creatina monohidratada simple.'
       ],
       featured: true
+    },
+    {
+      id: 'cbum-raw-creatine-blue-raspberry',
+      name: 'CBUM x RAW Creatina Monohidratada Blue Raspberry',
+      presentation: '30 servidas',
+      price: 14.00,
+      offer: { quantity: 2, price: 26.00 },
+      category: 'Creatinas',
+      image: 'assets/optimized/creatinas/cbum-raw-blue-raspberry.png',
+      status: 'Por encargo',
+      description: 'Creatina monohidratada de grado premium con sabor a frambuesa azul, pensada para complementar rutinas de fuerza. Sabor refrescante que puedes mezclar con agua.',
+      highlights: [
+        'Creatina monohidratada · 30 porciones',
+        'Sabor Blue Raspberry'
+      ]
+    },
+    {
+      id: 'cbum-raw-creatine-cherry-limeade',
+      name: 'CBUM x RAW Creatina Monohidratada Cherry Limeade',
+      presentation: '30 servidas',
+      price: 14.00,
+      offer: { quantity: 2, price: 26.00 },
+      category: 'Creatinas',
+      image: 'assets/optimized/creatinas/cbum-raw-cherry-limeade.png',
+      status: 'Por encargo',
+      description: 'Creatina monohidratada con sabor Cherry Limeade, pensada para complementar rutinas de fuerza. Combina un toque cítrico y dulce de cereza con lima.',
+      highlights: [
+        'Creatina monohidratada · 30 porciones',
+        'Sabor Cherry Limeade'
+      ]
+    },
+    {
+      id: 'core-premium-creatine-unflavored',
+      name: 'CORE Premium Creatina Monohidratada Sin Sabor',
+      presentation: '30 servidas',
+      price: 13.00,
+      offer: { quantity: 2, price: 25.00 },
+      category: 'Creatinas',
+      image: 'assets/optimized/creatinas/core-premium-creatine-unflavored.png',
+      status: 'Por encargo',
+      description: 'Creatina monohidratada micronizada sin sabor, diseñada para complementar rutinas de fuerza y mezclarse fácilmente con otras bebidas.',
+      highlights: [
+        '5 g de creatina monohidratada por porción',
+        '30 porciones · Sin sabor'
+      ]
+    },
+    {
+      id: 'wellah-creatine-coconut-lime',
+      name: 'Wellah Creatina Monohidratada Coconut Lime',
+      presentation: '245 g',
+      price: 18.50,
+      offer: { quantity: 2, price: 35.00 },
+      category: 'Creatinas',
+      image: 'assets/optimized/creatinas/wellah-coconut-lime.png',
+      status: 'Por encargo',
+      description: 'Creatina monohidratada sabor coco-lima con D-Manosa y extracto de arándano. La marca la presenta como fórmula de apoyo al bienestar urinario y de digestión ligera.',
+      highlights: [
+        '3 g de creatina monohidratada por porción',
+        'Sabor Coconut Lime · 245 g'
+      ]
     },
     { 
       id: 'oneofone', 
