@@ -376,6 +376,72 @@ window.SP_DATA = {
         { name: 'Lemonade', image: 'assets/pre-entrenos/mutant-madness-lemonade.webp' }
       ]
     },
+    {
+      id: 'skulls-preworkout',
+      name: 'Skulls Nutrition Pre-Workout',
+      presentation: '30 servidas',
+      price: 18.00,
+      offer: { quantity: 2, price: 34.00 },
+      category: 'Pre-entrenos',
+      image: 'assets/pre-entrenos/skulls-xtreme-sour-apple-rage.png',
+      status: 'Por encargo',
+      flavorLabel: 'Fórmula y sabor',
+      description: 'Elige entre la fórmula Xtreme y la fórmula + Testosterone, ambas con 30 porciones. Revisa los ingredientes y las advertencias del envase antes de consumir.',
+      highlights: [
+        '30 porciones por envase',
+        'Escoge la fórmula y el sabor'
+      ],
+      flavors: [
+        {
+          name: 'Xtreme · Sour Apple Rage',
+          image: 'assets/pre-entrenos/skulls-xtreme-sour-apple-rage.png',
+          description: 'Pre-entreno Xtreme con sabor a manzana verde ácida, formulado para acompañar entrenamientos intensos.'
+        },
+        {
+          name: '+ Testosterone · Mango Madness (Agotado)',
+          image: 'assets/pre-entrenos/skulls-testosterone-mango-madness.png',
+          status: 'Agotado',
+          description: 'Fórmula Pre-Workout + Testosterone con sabor a mango. Actualmente agotada.'
+        }
+      ]
+    },
+    {
+      id: 'nutrex-outrage',
+      name: 'Nutrex Research Outrage Pre-Workout',
+      presentation: '30 servidas',
+      price: 19.00,
+      offer: { quantity: 2, price: 36.00 },
+      category: 'Pre-entrenos',
+      image: 'assets/pre-entrenos/nutrex-outrage-blue-raspberry.png',
+      status: 'Por encargo',
+      description: 'Pre-entreno ultra estimulante para acompañar sesiones exigentes, con opciones de sabor frutales. Revisa los ingredientes y las advertencias del envase.',
+      highlights: [
+        '30 porciones por envase',
+        'Fórmula Ultra Stim'
+      ],
+      flavors: [
+        {
+          name: 'Blue Raspberry',
+          image: 'assets/pre-entrenos/nutrex-outrage-blue-raspberry.png',
+          description: 'Frambuesa azul de sabor intenso y refrescante.'
+        },
+        {
+          name: 'Strawberry Watermelon',
+          image: 'assets/pre-entrenos/nutrex-outrage-strawberry-watermelon.png',
+          description: 'Combinación refrescante de fresa y sandía.'
+        },
+        {
+          name: 'Lemon Lime',
+          image: 'assets/pre-entrenos/nutrex-outrage-lemon-lime.png',
+          description: 'Sabor cítrico de limón y lima.'
+        },
+        {
+          name: 'Fruit Punch',
+          image: 'assets/pre-entrenos/nutrex-outrage-fruit-punch.png',
+          description: 'Clásico sabor a ponche de frutas.'
+        }
+      ]
+    },
     { 
       id: 'lipo6-unit', 
       name: 'Nutrex Lipo-6 Black Ultra Concentrado',

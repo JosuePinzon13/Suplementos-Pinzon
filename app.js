@@ -36,7 +36,7 @@ function money(value) { return value == null ? 'Consultar' : `$${value.toFixed(2
 function productStatusClass(status = '') {
   const normalizedStatus = status.toLowerCase();
   if (normalizedStatus.includes('preventa')) return 'product-status--preorder';
-  if (normalizedStatus.includes('encargo') || normalizedStatus.includes('pedido') || normalizedStatus.includes('disponible')) {
+  if (normalizedStatus.includes('encargo') || normalizedStatus.includes('pedido') || normalizedStatus.includes('disponible') || normalizedStatus.includes('agotado')) {
     return 'product-status--order';
   }
   return 'product-status--neutral';
@@ -68,6 +68,9 @@ function addToCart(type, id, card, addButton) {
   if (!itemData) return;
 
   const addQuantity = Number(addButton?.dataset.addQuantity) || 1;
+  const selectedFlavorIndex = card.querySelector('.flavor-select')?.selectedIndex;
+  const selectedFlavorData = itemData.flavors?.[selectedFlavorIndex];
+  if (selectedFlavorData?.status?.toLowerCase().includes('agotado')) return;
   const selectedFlavor = type === 'product'
     ? card.querySelector('.flavor-select')?.selectedOptions[0]?.textContent.trim() || ''
     : '';
@@ -318,6 +321,7 @@ window.changeFlavor = function(selectEl) {
   const product = products.find(item => item.id === card.dataset.productId);
   const flavor = product?.flavors?.[selectEl.selectedIndex];
   card.querySelector('.product-image').classList.toggle('has-light-image-background', Boolean(flavor?.lightBackground));
+  if (product?.flavors) updateFlavorAvailability(card, product, selectEl.selectedIndex);
   const highlightsEl = card.querySelector('.product-highlights');
   if (product?.flavors && highlightsEl) {
     highlightsEl.replaceChildren(...getFlavorHighlights(product, selectEl.selectedIndex).map(highlight => {
@@ -342,13 +346,28 @@ function getFlavorHighlights(product, flavorIndex = 0) {
   return [...(product.highlights || []).slice(0, 2), `Sabor: ${flavor.name}`];
 }
 
+function updateFlavorAvailability(card, product, flavorIndex) {
+  const flavor = product.flavors[flavorIndex];
+  const status = flavor.status || product.status;
+  const unavailable = status.toLowerCase().includes('agotado');
+  const statusEl = card.querySelector('.product-status');
+  statusEl.textContent = status;
+  statusEl.className = `product-status ${productStatusClass(status)}`;
+  card.querySelectorAll('.add-to-cart-btn').forEach(button => {
+    button.disabled = unavailable;
+    if (button.dataset.availableLabel) {
+      button.textContent = unavailable ? 'Agotado' : button.dataset.availableLabel;
+    }
+  });
+}
+
 function productCard(p) {
   // 1. Selector de sabores (si existen)
   const hasFlavors = p.flavors && p.flavors.length > 0;
   
   const flavorsHTML = hasFlavors ? `
     <div class="flavor-select-wrap">
-      <label for="flavor-${p.id}">Sabor:</label>
+      <label for="flavor-${p.id}">${p.flavorLabel || 'Sabor'}:</label>
       <select id="flavor-${p.id}" class="flavor-select" onchange="changeFlavor(this)">
         ${p.flavors.map(f => `<option value="${f.image}" data-description="${f.description || ''}">${f.name}</option>`).join('')}
       </select>
@@ -385,7 +404,7 @@ function productCard(p) {
 
   return `
     <article class="product-card${p.featured ? ' is-featured' : ''}" data-category="${p.category}" data-product-id="${p.id}">
-      <div class="product-image ${p.id}">
+      <div class="product-image ${p.id}${p.flavors?.[0]?.lightBackground ? ' has-light-image-background' : ''}">
         ${p.featured ? '<span class="product-badge">Destacado</span>' : ''}
         ${p.offer ? `<span class="offer-image-badge">${p.offer.quantity} POR ${money(p.offer.price)}</span>` : ''}
         <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.parentElement.innerHTML='<div class=\\'image-fallback\\'>${p.name}</div>'">
@@ -420,14 +439,14 @@ function productCard(p) {
           </span>
           ${p.savings ? `<span class="savings-badge">Ahorras ${money(p.savings)}</span>` : ''}
           ${p.offer ? '<span class="unit-price-note">Precio por unidad</span>' : ''}
-          <small class="product-status ${productStatusClass(p.status)}">${p.status}</small>
+          <small class="product-status ${productStatusClass(p.flavors?.[0]?.status || p.status)}">${p.flavors?.[0]?.status || p.status}</small>
         </div>
         ${p.offer ? `
           <div class="offer-actions">
-            <button class="card-btn add-to-cart-btn offer-cta" type="button" data-cart-type="product" data-cart-id="${p.id}" data-add-quantity="${p.offer.quantity}">Agregar dúo · ${money(p.offer.price)}</button>
-            <button class="card-btn add-to-cart-btn offer-single-cta" type="button" data-cart-type="product" data-cart-id="${p.id}">Agregar 1 · ${money(p.price)}</button>
+            <button class="card-btn add-to-cart-btn offer-cta" type="button" data-cart-type="product" data-cart-id="${p.id}" data-add-quantity="${p.offer.quantity}" data-available-label="Agregar dúo · ${money(p.offer.price)}">Agregar dúo · ${money(p.offer.price)}</button>
+            <button class="card-btn add-to-cart-btn offer-single-cta" type="button" data-cart-type="product" data-cart-id="${p.id}" data-available-label="Agregar 1 · ${money(p.price)}">Agregar 1 · ${money(p.price)}</button>
           </div>
-        ` : `<button class="card-btn add-to-cart-btn" type="button" data-cart-type="product" data-cart-id="${p.id}">Agregar al carrito</button>`}
+        ` : `<button class="card-btn add-to-cart-btn" type="button" data-cart-type="product" data-cart-id="${p.id}" data-available-label="Agregar al carrito">Agregar al carrito</button>`}
       </div>
     </article>`;
 }

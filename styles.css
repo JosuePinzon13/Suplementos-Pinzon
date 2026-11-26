@@ -15,6 +15,7 @@
 .card-btn:hover{background:#1ebc59;transform:translateY(-1px);color:#fff}
 .add-to-cart-btn{border:0;font:inherit;cursor:pointer}
 .card-btn.add-to-cart-btn{width:100%}
+.product-card .card-btn.add-to-cart-btn:disabled{background:#a1a1aa;color:#fff;cursor:not-allowed;opacity:.78;transform:none}
 .combo-bottom .add-to-cart-btn{padding:10px 12px;border-radius:9px;background:#25d366;color:#fff;font-size:12px;font-weight:800;white-space:nowrap}
 .combo-bottom .add-to-cart-btn:hover{background:#1ebc59}
 
@@ -1277,5 +1278,137 @@ summary:focus-visible {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+.holiday-announcement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 18px;
+  background: linear-gradient(90deg, #0d4c32, #8b171e 52%, #0d4c32);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.holiday-ornament {
+  color: #ffe08a;
+  white-space: nowrap;
+}
+
+.brand-logo {
+  position: relative;
+  width: 64px;
+  height: 56px;
+  padding: 4px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.santa-hat {
+  position: absolute;
+  top: -12px;
+  right: 2px;
+  z-index: 4;
+  width: 34px;
+  height: 30px;
+  transform: rotate(16deg);
+  pointer-events: none;
+}
+
+.santa-hat::before {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 24px;
+  height: 21px;
+  background: linear-gradient(145deg, #f13239, #a90f18);
+  clip-path: polygon(0 100%, 100% 100%, 77% 0);
+  content: "";
+}
+
+.santa-hat::after {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 34px;
+  height: 7px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .35);
+  content: "";
+}
+
+.santa-hat-pom {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  z-index: 1;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 8% 82%, rgba(20, 118, 69, .16), transparent 25%),
+    radial-gradient(circle at 72% 35%, rgba(215, 25, 32, .18), transparent 28%),
+    linear-gradient(120deg, #09090b 0%, #111114 62%, #18090b 100%);
+}
+
+.holiday-eyebrow {
+  color: #f3cf72;
+}
+
+.hero-card {
+  border-color: rgba(232, 194, 92, .35);
+}
+
+.holiday-card-badge {
+  margin: 0 0 16px;
+  color: #f3cf72 !important;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.hero-logo-wrap {
+  position: relative;
+  z-index: 2;
+  width: min(390px, 88%);
+}
+
+.hero-card .hero-logo {
+  width: 100%;
+  max-height: 300px;
+}
+
+.hero-card .santa-hat--hero {
+  top: -21px;
+  right: 7%;
+  transform: rotate(16deg) scale(1.5);
+}
+
+@media (max-width: 620px) {
+  .holiday-announcement {
+    gap: 7px;
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .holiday-ornament {
+    font-size: 12px;
   }
 }
