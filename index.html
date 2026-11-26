@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#73151b" />
   <meta name="description" content="Suplementos Pinzón: creatinas, proteínas, ganadores de peso y suplementos deportivos en Panamá. Productos originales, disponibles y bajo pedido." />
   <title>Suplementos Pinzón | Panamá</title>
-  <link rel="stylesheet" href="styles.css?v=82" />
+  <link rel="stylesheet" href="styles.css?v=83" />
 </head>
 <body>
   <div class="holiday-announcement">
@@ -81,22 +81,45 @@
   </div>
   <dialog class="nutrex-notice" id="nutrexNotice" aria-labelledby="nutrexNoticeTitle">
     <button class="nutrex-notice-close" id="nutrexNoticeClose" type="button" aria-label="Cerrar notificación">×</button>
-    <p class="nutrex-notice-label">Promoción navideña</p>
-    <h2 id="nutrexNoticeTitle">Nutrex Creatina</h2>
-    <p class="nutrex-notice-subtitle">Creatina monohidratada · 60 servidas</p>
-    <p class="nutrex-notice-stock">Disponibilidad inmediata: <strong>5 de 12 unidades</strong></p>
+    <div class="nutrex-notice-product">
+      <div class="nutrex-notice-image">
+        <img src="assets/creatinas/nutrex.webp" alt="Bote de Nutrex Creatina Monohidratada" />
+        <span class="nutrex-notice-image-badge" id="nutrexNoticePriceBadge">31% OFF</span>
+      </div>
+      <div class="nutrex-notice-product-copy">
+        <p class="nutrex-notice-label">Promoción navideña</p>
+        <h2 id="nutrexNoticeTitle">Nutrex Creatina</h2>
+        <p class="nutrex-notice-subtitle">Creatina monohidratada · 60 servidas</p>
+      </div>
+    </div>
+    <div class="nutrex-stock-live">
+      <div class="nutrex-stock-live-copy">
+        <span id="nutrexNoticeStockText">🔥 Stock físico: Solo quedan 5 de 12 unidades para entrega inmediata</span>
+        <strong id="nutrexNoticeStockCount">42% disponible</strong>
+      </div>
+      <div class="nutrex-stock-meter" role="progressbar" aria-label="Inventario disponible de Nutrex Creatina" aria-valuemin="0" aria-valuemax="12" aria-valuenow="5">
+        <span id="nutrexNoticeStockBar" style="width: 42%"></span>
+      </div>
+      <p class="nutrex-notice-feedback" id="nutrexNoticeFeedback" aria-live="polite" hidden></p>
+    </div>
     <div class="nutrex-notice-prices">
       <div class="nutrex-notice-price">
         <span>1 unidad</span>
-        <strong>$10.00</strong>
+        <div class="nutrex-unit-price">
+          <strong id="nutrexNoticeSinglePrice">$10.00</strong>
+          <del id="nutrexNoticeSingleRegular">$13.75</del>
+        </div>
       </div>
       <div class="nutrex-notice-price nutrex-notice-price--duo">
+        <span class="nutrex-notice-choice-badge" id="nutrexNoticeChoice">MÁS ELEGIDO · AHORRAS $8.50</span>
         <span>Precio especial en dúo</span>
-        <strong>2 × $19.00</strong>
-        <small>31% menos · Antes $27.50</small>
+        <strong id="nutrexNoticeDuoPrice">2 × $19.00</strong>
+        <small>Antes <del id="nutrexNoticeDuoRegular">$27.50</del></small>
+        <b id="nutrexNoticeUnitPrice">Solo $9.50 cada una</b>
       </div>
     </div>
-    <a href="#featuredProductGrid">Ver oferta</a>
+    <button class="nutrex-notice-cta add-to-cart-btn" type="button" data-cart-type="product" data-cart-id="nutrex60" data-add-quantity="2">Agregar dúo · $19.00</button>
+    <button class="nutrex-notice-secondary add-to-cart-btn" type="button" data-cart-type="product" data-cart-id="nutrex60">Agregar 1 unidad · $10.00</button>
   </dialog>
 
   <main>
@@ -370,6 +393,6 @@
   </footer>
 
   <script src="data.js?v=79"></script>
-  <script src="app.js?v=82"></script>
+  <script src="app.js?v=83"></script>
 </body>
 </html>

@@ -80,23 +80,26 @@ function updateInventoryFeedback() {
 
 function addToCart(type, id, card, addButton) {
   const itemData = (type === 'product' ? products : combos).find(item => item.id === id);
-  if (!itemData) return;
+  if (!itemData) return false;
 
   const addQuantity = Number(addButton?.dataset.addQuantity) || 1;
   const cartQuantity = type === 'product' ? getCartProductQuantity(id) : 0;
   if (itemData.inventory && cartQuantity + addQuantity > itemData.inventory.available) {
     const remaining = Math.max(0, itemData.inventory.available - cartQuantity);
-    card.querySelector('.stock-feedback').textContent = remaining
-      ? `Solo puedes agregar ${remaining} unidad${remaining === 1 ? '' : 'es'} más; hay ${itemData.inventory.available} disponibles en total.`
-      : `Ya tienes las ${itemData.inventory.available} unidades disponibles en tu pedido.`;
-    card.querySelector('.stock-feedback').hidden = false;
-    return;
+    const feedback = card?.querySelector('.stock-feedback, .nutrex-notice-feedback');
+    if (feedback) {
+      feedback.textContent = remaining
+        ? `Solo puedes agregar ${remaining} unidad${remaining === 1 ? '' : 'es'} más; hay ${itemData.inventory.available} disponibles en total.`
+        : `Ya tienes las ${itemData.inventory.available} unidades disponibles en tu pedido.`;
+      feedback.hidden = false;
+    }
+    return false;
   }
-  const selectedFlavorIndex = card.querySelector('.flavor-select')?.selectedIndex;
+  const selectedFlavorIndex = card?.querySelector('.flavor-select')?.selectedIndex;
   const selectedFlavorData = itemData.flavors?.[selectedFlavorIndex];
-  if (selectedFlavorData?.status?.toLowerCase().includes('agotado')) return;
+  if (selectedFlavorData?.status?.toLowerCase().includes('agotado')) return false;
   const selectedFlavor = type === 'product'
-    ? card.querySelector('.flavor-select')?.selectedOptions[0]?.textContent.trim() || ''
+    ? card?.querySelector('.flavor-select')?.selectedOptions[0]?.textContent.trim() || ''
     : '';
   const key = `${type}:${id}:${selectedFlavor}`;
   const existingItem = cart.find(item => item.key === key);
@@ -125,6 +128,7 @@ function addToCart(type, id, card, addButton) {
       if (addButton.isConnected) addButton.textContent = originalText;
     }, 1200);
   }
+  return true;
 }
 
 function renderCart(animate = false) {
@@ -315,7 +319,9 @@ welcomeBotOptions.addEventListener('click', event => {
 document.addEventListener('click', event => {
   const addButton = event.target.closest('.add-to-cart-btn');
   if (addButton) {
-    addToCart(addButton.dataset.cartType, addButton.dataset.cartId, addButton.closest('.product-card, .combo-card'), addButton);
+    const card = addButton.closest('.product-card, .combo-card, .nutrex-notice');
+    const added = addToCart(addButton.dataset.cartType, addButton.dataset.cartId, card, addButton);
+    if (added && card?.matches('.nutrex-notice')) card.close();
     return;
   }
 
@@ -528,14 +534,42 @@ renderProducts();
 
 const nutrexNotice = document.getElementById('nutrexNotice');
 const nutrexNoticeClose = document.getElementById('nutrexNoticeClose');
-if (nutrexNotice && nutrexNoticeClose) {
+const nutrexProduct = products.find(product => product.id === 'nutrex60');
+if (nutrexNotice && nutrexNoticeClose && nutrexProduct?.inventory && nutrexProduct.offer) {
+  const { available, lotSize } = nutrexProduct.inventory;
+  const regularUnitPrice = nutrexProduct.originalPrice > nutrexProduct.price
+    ? nutrexProduct.originalPrice
+    : nutrexProduct.price;
+  const regularDuoPrice = regularUnitPrice * nutrexProduct.offer.quantity;
+  const duoSavings = regularDuoPrice - nutrexProduct.offer.price;
+  const duoDiscount = Math.round((duoSavings / regularDuoPrice) * 100);
+  const stockRatio = Math.round((available / lotSize) * 100);
+  document.getElementById('nutrexNoticeStockText').textContent =
+    `🔥 Stock físico: Solo quedan ${available} de ${lotSize} unidades para entrega inmediata`;
+  document.getElementById('nutrexNoticeStockCount').textContent = `${stockRatio}% disponible`;
+  const stockMeter = nutrexNotice.querySelector('.nutrex-stock-meter');
+  stockMeter.setAttribute('aria-valuemax', String(lotSize));
+  stockMeter.setAttribute('aria-valuenow', String(available));
+  document.getElementById('nutrexNoticeStockBar').style.width = `${stockRatio}%`;
+  document.getElementById('nutrexNoticeSinglePrice').textContent = money(nutrexProduct.price);
+  document.getElementById('nutrexNoticeSingleRegular').textContent = money(regularUnitPrice);
+  document.getElementById('nutrexNoticeChoice').textContent =
+    `MÁS ELEGIDO · AHORRAS ${money(duoSavings)}`;
+  document.getElementById('nutrexNoticeDuoPrice').textContent =
+    `${nutrexProduct.offer.quantity} × ${money(nutrexProduct.offer.price)}`;
+  document.getElementById('nutrexNoticeDuoRegular').textContent = money(regularDuoPrice);
+  document.getElementById('nutrexNoticeUnitPrice').textContent =
+    `Solo ${money(nutrexProduct.offer.price / nutrexProduct.offer.quantity)} cada una`;
+  const duoButton = nutrexNotice.querySelector('[data-add-quantity]');
+  duoButton.textContent = `Agregar dúo · ${money(nutrexProduct.offer.price)}`;
+  const singleButton = nutrexNotice.querySelector('.nutrex-notice-secondary');
+  singleButton.textContent = `Agregar 1 unidad · ${money(nutrexProduct.price)}`;
+  document.getElementById('nutrexNoticePriceBadge').textContent = `${duoDiscount}% OFF`;
+
   window.setTimeout(() => {
     nutrexNotice.showModal();
   }, 700);
   nutrexNoticeClose.addEventListener('click', () => {
-    nutrexNotice.close();
-  });
-  nutrexNotice.querySelector('a').addEventListener('click', () => {
     nutrexNotice.close();
   });
 }
