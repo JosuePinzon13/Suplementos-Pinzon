@@ -23,9 +23,11 @@ window.SP_DATA = {
       price: 10.00,
       originalPrice: 13.75,
       offer: { quantity: 2, price: 19.00 },
+      inventory: { available: 5, lotSize: 12 },
+      featuredPriority: 1,
       category: 'Creatinas', 
       image: 'assets/creatinas/nutrex.webp', 
-      status: 'Preventa',
+      status: 'Disponible ahora',
       description: 'Creatina monohidratada micronizada para complementar entrenamientos de fuerza y apoyar el rendimiento en ejercicios intensos. Su sabor neutro facilita combinarla con otras bebidas.',
       highlights: [
         'Apoya fuerza y potencia en ejercicios intensos',

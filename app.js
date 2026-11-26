@@ -36,7 +36,8 @@ function money(value) { return value == null ? 'Consultar' : `$${value.toFixed(2
 function productStatusClass(status = '') {
   const normalizedStatus = status.toLowerCase();
   if (normalizedStatus.includes('preventa')) return 'product-status--preorder';
-  if (normalizedStatus.includes('encargo') || normalizedStatus.includes('pedido') || normalizedStatus.includes('disponible') || normalizedStatus.includes('agotado')) {
+  if (normalizedStatus.includes('disponible')) return 'product-status--available';
+  if (normalizedStatus.includes('encargo') || normalizedStatus.includes('pedido') || normalizedStatus.includes('agotado')) {
     return 'product-status--order';
   }
   return 'product-status--neutral';
@@ -63,11 +64,34 @@ function cartItemPriceBreakdown(item) {
   return `${parts.join(' + ')} = ${money(cartItemTotal(item))}`;
 }
 
+function getCartProductQuantity(productId) {
+  return cart.reduce((total, item) => total + (item.productId === productId ? item.quantity : 0), 0);
+}
+
+function updateInventoryFeedback() {
+  products.filter(product => product.inventory).forEach(product => {
+    const quantity = getCartProductQuantity(product.id);
+    document.querySelectorAll(`.stock-callout[data-stock-product="${product.id}"] .stock-feedback`).forEach(feedback => {
+      feedback.textContent = quantity ? `En tu pedido: ${quantity} de ${product.inventory.available} unidades.` : '';
+      feedback.hidden = quantity === 0;
+    });
+  });
+}
+
 function addToCart(type, id, card, addButton) {
   const itemData = (type === 'product' ? products : combos).find(item => item.id === id);
   if (!itemData) return;
 
   const addQuantity = Number(addButton?.dataset.addQuantity) || 1;
+  const cartQuantity = type === 'product' ? getCartProductQuantity(id) : 0;
+  if (itemData.inventory && cartQuantity + addQuantity > itemData.inventory.available) {
+    const remaining = Math.max(0, itemData.inventory.available - cartQuantity);
+    card.querySelector('.stock-feedback').textContent = remaining
+      ? `Solo puedes agregar ${remaining} unidad${remaining === 1 ? '' : 'es'} más; hay ${itemData.inventory.available} disponibles en total.`
+      : `Ya tienes las ${itemData.inventory.available} unidades disponibles en tu pedido.`;
+    card.querySelector('.stock-feedback').hidden = false;
+    return;
+  }
   const selectedFlavorIndex = card.querySelector('.flavor-select')?.selectedIndex;
   const selectedFlavorData = itemData.flavors?.[selectedFlavorIndex];
   if (selectedFlavorData?.status?.toLowerCase().includes('agotado')) return;
@@ -82,6 +106,8 @@ function addToCart(type, id, card, addButton) {
   } else {
     cart.push({
       key,
+      productId: type === 'product' ? id : null,
+      inventoryLimit: itemData.inventory?.available ?? null,
       name: itemData.name,
       presentation: itemData.presentation || '',
       price: itemData.price == null ? null : itemData.price,
@@ -115,6 +141,7 @@ function renderCart(animate = false) {
   cartTotal.textContent = hasUnpricedItems ? 'Por confirmar' : money(total);
   cartCheckout.setAttribute('aria-disabled', String(cart.length === 0));
   cartCheckout.tabIndex = cart.length === 0 ? -1 : 0;
+  updateInventoryFeedback();
 
   if (cart.length === 0) {
     cartItems.innerHTML = '<p class="cart-empty">Tu carrito está vacío. Agrega productos o combos para armar tu pedido.</p>';
@@ -134,7 +161,7 @@ function renderCart(animate = false) {
       <div class="cart-item-controls" aria-label="Cantidad de ${item.name}">
         <button type="button" data-cart-action="decrease" data-key="${item.key}" aria-label="Disminuir cantidad" ${item.quantity === 1 ? 'disabled' : ''}>−</button>
         <span>${item.quantity}</span>
-        <button type="button" data-cart-action="increase" data-key="${item.key}" aria-label="Aumentar cantidad">+</button>
+        <button type="button" data-cart-action="increase" data-key="${item.key}" aria-label="Aumentar cantidad" ${item.inventoryLimit != null && getCartProductQuantity(item.productId) >= item.inventoryLimit ? 'disabled' : ''}>+</button>
         <button type="button" class="cart-remove" data-cart-action="remove" data-key="${item.key}" aria-label="Quitar ${item.name} del pedido">Quitar</button>
       </div>
       <strong class="cart-item-subtotal">${item.price == null ? 'Consultar precio' : money(cartItemTotal(item))}</strong>
@@ -297,7 +324,10 @@ document.addEventListener('click', event => {
   const itemIndex = cart.findIndex(item => item.key === cartAction.dataset.key);
   if (itemIndex === -1) return;
 
-  if (cartAction.dataset.cartAction === 'increase') cart[itemIndex].quantity += 1;
+  if (cartAction.dataset.cartAction === 'increase') {
+    const item = cart[itemIndex];
+    if (item.inventoryLimit == null || getCartProductQuantity(item.productId) < item.inventoryLimit) item.quantity += 1;
+  }
   if (cartAction.dataset.cartAction === 'decrease' && cart[itemIndex].quantity > 1) cart[itemIndex].quantity -= 1;
   if (cartAction.dataset.cartAction === 'remove') cart.splice(itemIndex, 1);
   renderCart(true);
@@ -428,6 +458,18 @@ function productCard(p) {
             </span>
           </div>
         ` : ''}
+        ${p.inventory ? `
+          <div class="stock-callout" data-stock-product="${p.id}">
+            <div class="stock-callout-heading">
+              <strong>Disponibilidad inmediata</strong>
+              <span>${p.inventory.available} de ${p.inventory.lotSize} unidades</span>
+            </div>
+            <div class="stock-meter" role="progressbar" aria-label="Unidades disponibles del lote" aria-valuemin="0" aria-valuemax="${p.inventory.lotSize}" aria-valuenow="${p.inventory.available}">
+              <span style="--stock-ratio: ${(p.inventory.available / p.inventory.lotSize) * 100}%"></span>
+            </div>
+            <p class="stock-feedback" aria-live="polite" hidden></p>
+          </div>
+        ` : ''}
         ${highlightsHTML}
         ${flavorsHTML}
         ${detailsHTML}
@@ -454,6 +496,7 @@ function productCard(p) {
 function renderFeaturedProducts() {
   featuredProductGrid.innerHTML = products
     .filter(p => p.featured)
+    .sort((a, b) => (b.featuredPriority || 0) - (a.featuredPriority || 0))
     .map(productCard)
     .join('');
   observeReveals(featuredProductGrid);
@@ -476,6 +519,20 @@ filters.addEventListener('click', e => {
 
 renderFeaturedProducts();
 renderProducts();
+
+const nutrexNotice = document.getElementById('nutrexNotice');
+const nutrexNoticeClose = document.getElementById('nutrexNoticeClose');
+if (nutrexNotice && nutrexNoticeClose) {
+  window.setTimeout(() => {
+    nutrexNotice.hidden = false;
+  }, 700);
+  nutrexNoticeClose.addEventListener('click', () => {
+    nutrexNotice.hidden = true;
+  });
+  nutrexNotice.querySelector('a').addEventListener('click', () => {
+    nutrexNotice.hidden = true;
+  });
+}
 
 // Render de combos con soporte para lazy loading y decoding async
 comboGrid.innerHTML = combos.map(c => `
