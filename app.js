@@ -23,7 +23,7 @@ const revealObserver = 'IntersectionObserver' in window
 
 function observeReveals(container) {
   if (!revealObserver) return;
-  container.querySelectorAll('.section-head, .product-card, .combo-card, .event-card, .about-copy, .carousel-wrapper, .contact-actions')
+  container.querySelectorAll('.section-head, .product-card, .combo-card, .about-copy, .carousel-wrapper, .contact-actions')
     .forEach(element => {
       if (element.classList.contains('reveal')) return;
       element.classList.add('reveal');
