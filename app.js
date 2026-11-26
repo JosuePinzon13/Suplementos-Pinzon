@@ -394,6 +394,12 @@ function updateFlavorAvailability(card, product, flavorIndex) {
 function productCard(p) {
   // 1. Selector de sabores (si existen)
   const hasFlavors = p.flavors && p.flavors.length > 0;
+  const regularUnitPrice = p.originalPrice > p.price ? p.originalPrice : p.price;
+  const regularOfferTotal = p.offer ? regularUnitPrice * p.offer.quantity : 0;
+  const offerSavings = p.offer ? regularOfferTotal - p.offer.price : 0;
+  const offerDiscount = regularOfferTotal
+    ? Math.round((offerSavings / regularOfferTotal) * 100)
+    : 0;
   
   const flavorsHTML = hasFlavors ? `
     <div class="flavor-select-wrap">
@@ -448,13 +454,13 @@ function productCard(p) {
               <span class="product-offer-kicker">Precio especial en dúo</span>
               <div class="product-offer-price">
                 <strong>${p.offer.quantity} × ${money(p.offer.price)}</strong>
-                <del>Antes ${money(p.price * p.offer.quantity)}</del>
+                <del>Antes ${money(regularOfferTotal)}</del>
               </div>
               <span class="product-offer-unit">Solo ${money(p.offer.price / p.offer.quantity)} cada una</span>
             </div>
             <span class="product-offer-saving">
-              <strong>${Math.round(((p.price * p.offer.quantity - p.offer.price) / (p.price * p.offer.quantity)) * 100)}% menos</strong>
-              <span>${money(p.price * p.offer.quantity - p.offer.price)} de ahorro</span>
+              <strong>${offerDiscount}% menos</strong>
+              <span>${money(offerSavings)} de ahorro</span>
             </span>
           </div>
         ` : ''}
@@ -524,13 +530,13 @@ const nutrexNotice = document.getElementById('nutrexNotice');
 const nutrexNoticeClose = document.getElementById('nutrexNoticeClose');
 if (nutrexNotice && nutrexNoticeClose) {
   window.setTimeout(() => {
-    nutrexNotice.hidden = false;
+    nutrexNotice.showModal();
   }, 700);
   nutrexNoticeClose.addEventListener('click', () => {
-    nutrexNotice.hidden = true;
+    nutrexNotice.close();
   });
   nutrexNotice.querySelector('a').addEventListener('click', () => {
-    nutrexNotice.hidden = true;
+    nutrexNotice.close();
   });
 }
 
