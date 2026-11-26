@@ -1301,8 +1301,8 @@ summary:focus-visible {
 
 .brand-logo {
   position: relative;
-  width: 64px;
-  height: 56px;
+  width: 76px;
+  height: 58px;
   padding: 4px;
   box-sizing: border-box;
   overflow: visible;
@@ -1313,52 +1313,6 @@ summary:focus-visible {
   height: 100%;
   border-radius: 8px;
   object-fit: contain;
-}
-
-.santa-hat {
-  position: absolute;
-  top: -12px;
-  right: 2px;
-  z-index: 4;
-  width: 34px;
-  height: 30px;
-  transform: rotate(16deg);
-  pointer-events: none;
-}
-
-.santa-hat::before {
-  position: absolute;
-  top: 3px;
-  left: 6px;
-  width: 24px;
-  height: 21px;
-  background: linear-gradient(145deg, #f13239, #a90f18);
-  clip-path: polygon(0 100%, 100% 100%, 77% 0);
-  content: "";
-}
-
-.santa-hat::after {
-  position: absolute;
-  bottom: 4px;
-  left: 0;
-  width: 34px;
-  height: 7px;
-  border-radius: 5px;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .35);
-  content: "";
-}
-
-.santa-hat-pom {
-  position: absolute;
-  top: 0;
-  right: 2px;
-  z-index: 1;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
 }
 
 .hero {
@@ -1395,12 +1349,6 @@ summary:focus-visible {
   max-height: 300px;
 }
 
-.hero-card .santa-hat--hero {
-  top: -21px;
-  right: 7%;
-  transform: rotate(16deg) scale(1.5);
-}
-
 @media (max-width: 620px) {
   .holiday-announcement {
     gap: 7px;
@@ -1411,4 +1359,37 @@ summary:focus-visible {
   .holiday-ornament {
     font-size: 12px;
   }
+}
+
+.section-head h2::after {
+  display: block;
+  width: 54px;
+  height: 4px;
+  margin-top: 12px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #c91c25 0 52%, #147643 52%);
+  content: "";
+}
+
+.filter-btn.active {
+  border-color: #9c1b22;
+  background: linear-gradient(120deg, #a9141c 0 52%, #125b38);
+}
+
+.product-card {
+  border-color: #e2e6e2;
+  box-shadow: 0 8px 26px rgba(20, 72, 43, .06);
+}
+
+.product-card:hover {
+  border-color: #b7d2c0;
+  box-shadow: 0 16px 36px rgba(20, 72, 43, .12);
+}
+
+.nav-menu a:focus-visible,
+.filter-btn:focus-visible,
+.btn:focus-visible,
+.card-btn:focus-visible {
+  outline: 3px solid #e8be58;
+  outline-offset: 3px;
 }
