@@ -1379,19 +1379,41 @@ summary:focus-visible {
   border-top: 5px solid #277347;
   border-radius: 18px;
   background:
-    radial-gradient(circle at 100% 0, rgba(220, 239, 226, .8), transparent 34%),
+    radial-gradient(circle at 100% 0, rgba(220, 239, 226, .9), transparent 34%),
+    radial-gradient(circle at 0 100%, rgba(245, 238, 219, .55), transparent 30%),
     #fff;
   color: #17171a;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, .32);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .32), 0 0 0 1px rgba(255, 255, 255, .18);
 }
 
 .nutrex-notice[open] {
-  animation: nutrex-notice-in .35s cubic-bezier(.2, .8, .2, 1) both;
+  animation: nutrex-notice-in .48s cubic-bezier(.16, 1, .3, 1) both;
 }
 
 .nutrex-notice::backdrop {
   background: rgba(10, 14, 11, .68);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(7px);
+  animation: nutrex-backdrop-in .3s ease-out both;
+}
+
+.nutrex-notice[open] .nutrex-notice-product {
+  animation: nutrex-content-in .45s .06s both;
+}
+
+.nutrex-notice[open] .nutrex-stock-live {
+  animation: nutrex-content-in .45s .11s both;
+}
+
+.nutrex-notice[open] .nutrex-notice-prices {
+  animation: nutrex-content-in .45s .16s both;
+}
+
+.nutrex-notice[open] .nutrex-notice-cta {
+  animation: nutrex-content-in .45s .21s both, nutrex-cta-gradient 5s ease infinite, nutrex-cta-glow 3.2s 1.2s ease-in-out infinite;
+}
+
+.nutrex-notice[open] .nutrex-notice-secondary {
+  animation: nutrex-content-in .45s .26s both;
 }
 
 .nutrex-notice-product {
@@ -1410,7 +1432,8 @@ summary:focus-visible {
   border: 1px solid rgba(255, 255, 255, .18);
   border-radius: 15px;
   background: #10251a;
-  box-shadow: 0 7px 20px rgba(18, 61, 46, .22);
+  box-shadow: 0 7px 20px rgba(18, 61, 46, .22), 0 0 0 4px rgba(255, 255, 255, .72);
+  animation: nutrex-image-float 4s ease-in-out infinite;
 }
 
 .nutrex-notice-image img {
@@ -1433,6 +1456,7 @@ summary:focus-visible {
   font-size: 9px;
   font-weight: 900;
   letter-spacing: .04em;
+  animation: nutrex-badge-pulse 2.4s ease-in-out infinite;
 }
 
 .nutrex-notice-product-copy {
@@ -1507,11 +1531,22 @@ summary:focus-visible {
 }
 
 .nutrex-stock-meter > span {
+  position: relative;
   display: block;
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, #d6a53d, #38804e);
   transition: width .4s ease;
+  box-shadow: 0 0 10px rgba(56, 128, 78, .35);
+}
+
+.nutrex-stock-meter > span::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, .65) 50%, transparent 80%);
+  content: "";
+  animation: nutrex-meter-shine 2.8s ease-in-out infinite;
 }
 
 .nutrex-notice-feedback {
@@ -1539,6 +1574,15 @@ summary:focus-visible {
   border: 1px solid #e1e6e2;
   border-radius: 13px;
   background: #fafbfa;
+  transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+}
+
+@media (hover: hover) {
+  .nutrex-notice-price:hover {
+    transform: translateY(-3px);
+    border-color: #b7cdbd;
+    box-shadow: 0 9px 20px rgba(29, 96, 58, .12);
+  }
 }
 
 .nutrex-notice-price > span {
@@ -1572,10 +1616,32 @@ summary:focus-visible {
 }
 
 .nutrex-notice-price--duo {
+  position: relative;
+  overflow: hidden;
   gap: 5px;
   border-color: #1d603a;
-  background: linear-gradient(145deg, #123d2e, #1d603a);
-  box-shadow: 0 8px 20px rgba(29, 96, 58, .2);
+  background: linear-gradient(145deg, #123d2e, #1d603a 55%, #287847);
+  background-size: 180% 180%;
+  box-shadow: 0 8px 20px rgba(29, 96, 58, .25);
+  animation: nutrex-duo-glow 5s ease-in-out infinite;
+}
+
+.nutrex-notice-price--duo::after {
+  position: absolute;
+  top: -50%;
+  bottom: -50%;
+  left: -70%;
+  width: 35%;
+  transform: rotate(22deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .14), transparent);
+  content: "";
+  pointer-events: none;
+  animation: nutrex-card-shine 5.2s 1s ease-in-out infinite;
+}
+
+.nutrex-notice-price--duo > * {
+  position: relative;
+  z-index: 1;
 }
 
 .nutrex-notice-price--duo > span:not(.nutrex-notice-choice-badge),
@@ -1593,6 +1659,13 @@ summary:focus-visible {
   color: #3b2b08;
   font-size: 8px;
   line-height: 1.2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .16);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.nutrex-notice-price--duo:hover .nutrex-notice-choice-badge {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 11px rgba(0, 0, 0, .2);
 }
 
 .nutrex-notice-price--duo > strong {
@@ -1632,10 +1705,24 @@ summary:focus-visible {
 }
 
 .nutrex-notice-cta {
+  position: relative;
+  overflow: hidden;
   border: 0;
-  background: linear-gradient(100deg, #a9141c, #c12827);
+  background: linear-gradient(100deg, #99151d, #c12827, #a9141c);
+  background-size: 200% 100%;
   box-shadow: 0 7px 18px rgba(169, 20, 28, .24);
   color: #fff;
+  animation: nutrex-cta-gradient 5s ease infinite;
+}
+
+.nutrex-notice-cta::after {
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(105deg, transparent 28%, rgba(255, 255, 255, .23) 50%, transparent 72%);
+  content: "";
+  pointer-events: none;
+  animation: nutrex-button-shine 4.4s 1.4s ease-in-out infinite;
 }
 
 .nutrex-notice-secondary {
@@ -1655,6 +1742,7 @@ summary:focus-visible {
 
 .nutrex-notice-cta:hover {
   box-shadow: 0 9px 22px rgba(169, 20, 28, .3);
+  animation-play-state: paused;
 }
 
 .nutrex-notice-cta:focus-visible,
@@ -1698,6 +1786,62 @@ summary:focus-visible {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
+}
+
+@keyframes nutrex-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nutrex-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes nutrex-image-float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-3px) rotate(-1deg); }
+}
+
+@keyframes nutrex-badge-pulse {
+  0%, 100% { box-shadow: 0 2px 8px rgba(0, 0, 0, .24); }
+  50% { box-shadow: 0 2px 12px rgba(181, 28, 37, .55), 0 0 0 3px rgba(255, 255, 255, .18); }
+}
+
+@keyframes nutrex-meter-shine {
+  0%, 30% { transform: translateX(-110%); }
+  70%, 100% { transform: translateX(120%); }
+}
+
+@keyframes nutrex-card-shine {
+  0%, 35% { left: -70%; }
+  75%, 100% { left: 140%; }
+}
+
+@keyframes nutrex-duo-glow {
+  0%, 100% { background-position: 0 50%; box-shadow: 0 8px 20px rgba(29, 96, 58, .22); }
+  50% { background-position: 100% 50%; box-shadow: 0 10px 26px rgba(29, 96, 58, .38); }
+}
+
+@keyframes nutrex-button-shine {
+  0%, 28% { transform: translateX(-120%); }
+  62%, 100% { transform: translateX(120%); }
+}
+
+@keyframes nutrex-cta-gradient {
+  0%, 100% { background-position: 0 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes nutrex-cta-glow {
+  0%, 100% { box-shadow: 0 7px 18px rgba(169, 20, 28, .22); }
+  50% { box-shadow: 0 9px 24px rgba(169, 20, 28, .38); }
 }
 
 @media (max-width: 620px) {
